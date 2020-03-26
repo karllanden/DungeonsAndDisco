@@ -22,6 +22,6 @@ public class GunRotationcript : MonoBehaviour
         //    PickUp();
         //}
         GameObject target = GameObject.FindGameObjectWithTag("Target");
-        transform.LookAt(target.transform - Quaternion.EulerAngles(90,0,0));
+        transform.LookAt(target.transform);
     }
 }
