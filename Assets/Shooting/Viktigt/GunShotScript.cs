@@ -7,8 +7,8 @@ public class GunShotScript : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletSpawn;
     public int maxAmmo, currentAmmo;
-    float fireCd = 0.3f, timeSinceLastShot = 0;
-    float shotSpeed = 15;
+    float fireCd = 0.2f, timeSinceLastShot = 0;
+    float shotSpeed = 50;
     Vector3 direction;
     GameObject target, hand;
     // Start is called before the first frame update
