@@ -42,6 +42,7 @@ public class Pickup : MonoBehaviour
                         hands[0] = player.GetComponentInParent<Transform>().GetChild(0);
                         transform.SetParent(hands[0]);
                         gameObject.transform.position = hands[0].transform.position;
+                        gameObject.transform.rotation = hands[0].transform.rotation;
                     }
                 }
             }
@@ -55,6 +56,7 @@ public class Pickup : MonoBehaviour
                         hands[1] = player.GetComponentInParent<Transform>().GetChild(1);
                         transform.SetParent(hands[1]);
                         gameObject.transform.position = hands[1].transform.position;
+                        gameObject.transform.rotation = hands[1].transform.rotation;
                     }
                 }
             }
