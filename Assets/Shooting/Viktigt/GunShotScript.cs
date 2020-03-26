@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunShotScript : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
+    [SerializeField] Transform bulletSpawn;
     public int maxAmmo, currentAmmo;
     float fireCd = 0.3f, timeSinceLastShot = 0;
     float shotSpeed = 15;
@@ -40,6 +41,6 @@ public class GunShotScript : MonoBehaviour
     {
         GameObject createBullet = GameObject.Instantiate(bullet);
         Bullet firedBullet = createBullet.GetComponent<Bullet>();
-        firedBullet.GetValues(this.transform, shotSpeed, direction);
+        firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction);
     }
 }

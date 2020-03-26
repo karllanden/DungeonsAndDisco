@@ -10,6 +10,7 @@ public class TargetScript : MonoBehaviour
 
 
 
+
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +18,7 @@ public class TargetScript : MonoBehaviour
         RaycastHit hit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         this.transform.position = ray.direction;
-        this.transform.position = ray.direction - this.transform.position;
+        //this.transform.position = ray.direction - this.transform.position;
         if (Physics.Raycast(ray, out hit))
         {
             aim = hit.point;
