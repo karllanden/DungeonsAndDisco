@@ -8,12 +8,8 @@ public class Pickup : MonoBehaviour
     public GameObject player;
 
     public Transform[] hands;
-    bool E_isPressed, Q_ispressed;
     void Start()
     {
-        //hands = GetComponentsInChildren<Transform>();
-        E_isPressed = Input.GetKey(KeyCode.E);
-        Q_ispressed = Input.GetKey(KeyCode.Q);
         hands = new Transform[2];
     }
 
@@ -25,7 +21,7 @@ public class Pickup : MonoBehaviour
 
         InventorySwitch();
     }
-
+    //Söker efter Spelaren och kollar om spelarens child objekt (LeftHand och RightHand) har inga child objekts
     void InventoryPickUp()
     {
 
@@ -40,7 +36,6 @@ public class Pickup : MonoBehaviour
                     if (hands[0] == null)
                     {
                         hands[0] = player.GetComponentInParent<Transform>().GetChild(0);
-<<<<<<< HEAD
                         if (hands[0].childCount == 0)
                         {
                             transform.SetParent(hands[0]);
@@ -53,11 +48,6 @@ public class Pickup : MonoBehaviour
                             hands[0] = null;
                             player = null;
                         }
-=======
-                        transform.SetParent(hands[0]);
-                        gameObject.transform.position = hands[0].transform.position;
-                        gameObject.transform.rotation = hands[0].transform.rotation;
->>>>>>> 70b01619787fa974981c89fe8d2aef863019362e
                     }
                 }
             }
@@ -69,7 +59,6 @@ public class Pickup : MonoBehaviour
                     if (hands[1] == null)
                     {
                         hands[1] = player.GetComponentInParent<Transform>().GetChild(1);
-<<<<<<< HEAD
                         if (hands[1].childCount == 0)
                         {
 
@@ -81,11 +70,6 @@ public class Pickup : MonoBehaviour
                             hands[1] = null;
                             player = null;
                         }
-=======
-                        transform.SetParent(hands[1]);
-                        gameObject.transform.position = hands[1].transform.position;
-                        gameObject.transform.rotation = hands[1].transform.rotation;
->>>>>>> 70b01619787fa974981c89fe8d2aef863019362e
                     }
                 }
             }
@@ -95,6 +79,8 @@ public class Pickup : MonoBehaviour
 
 
     }
+
+    //När vapnen är uppplockad ska vapnen kolla om vilken hand är parent objekten och bytta till den andra hand parent
     void InventorySwitch()
     {
         if (Input.GetKeyDown(KeyCode.F))
