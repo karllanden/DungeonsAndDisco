@@ -41,6 +41,7 @@ public class Pickup : MonoBehaviour
                             transform.SetParent(hands[0]);
                             Debug.Log("Open hand");
                             gameObject.transform.position = hands[0].transform.position;
+                            gameObject.transform.rotation = hands[0].transform.rotation;
                         }
 
                         else
@@ -64,6 +65,7 @@ public class Pickup : MonoBehaviour
 
                             transform.SetParent(hands[1]);
                             gameObject.transform.position = hands[1].transform.position;
+                            gameObject.transform.rotation = hands[1].transform.rotation;
                         }
                         else
                         {
