@@ -5,28 +5,19 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     float velocity;
-    //float aliveTime = 0;
+    
     Vector3 direction;
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    //räknar ut hur långt kulan ska färdas denna frame
     void Update()
     {
-        //aliveTime += Time.deltaTime;
-        //if (aliveTime > 5)
-        //    Destroy(gameObject);
+
 
         float distanceThisFrame = velocity * Time.deltaTime;
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
         
     }
 
+    //bestämmer när en kollision händer och sedan hur kulan ska agera
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag != "Player")
@@ -39,6 +30,7 @@ public class Bullet : MonoBehaviour
         }
         
     }
+    //tar emot värden som bestämmer kulans "behavior" från vapnet
     public void GetValues(Transform tf, float v, Vector3 dir)
     {
         this.transform.rotation = tf.rotation;
