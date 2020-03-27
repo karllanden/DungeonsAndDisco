@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class AIMasterScript : MonoBehaviour
 {
+    //Jeff
     [SerializeField]
     public float maxHp;
     [SerializeField]
