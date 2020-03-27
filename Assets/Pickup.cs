@@ -40,9 +40,24 @@ public class Pickup : MonoBehaviour
                     if (hands[0] == null)
                     {
                         hands[0] = player.GetComponentInParent<Transform>().GetChild(0);
+<<<<<<< HEAD
+                        if (hands[0].childCount == 0)
+                        {
+                            transform.SetParent(hands[0]);
+                            Debug.Log("Open hand");
+                            gameObject.transform.position = hands[0].transform.position;
+                        }
+
+                        else
+                        {
+                            hands[0] = null;
+                            player = null;
+                        }
+=======
                         transform.SetParent(hands[0]);
                         gameObject.transform.position = hands[0].transform.position;
                         gameObject.transform.rotation = hands[0].transform.rotation;
+>>>>>>> 70b01619787fa974981c89fe8d2aef863019362e
                     }
                 }
             }
@@ -54,9 +69,23 @@ public class Pickup : MonoBehaviour
                     if (hands[1] == null)
                     {
                         hands[1] = player.GetComponentInParent<Transform>().GetChild(1);
+<<<<<<< HEAD
+                        if (hands[1].childCount == 0)
+                        {
+
+                            transform.SetParent(hands[1]);
+                            gameObject.transform.position = hands[1].transform.position;
+                        }
+                        else
+                        {
+                            hands[1] = null;
+                            player = null;
+                        }
+=======
                         transform.SetParent(hands[1]);
                         gameObject.transform.position = hands[1].transform.position;
                         gameObject.transform.rotation = hands[1].transform.rotation;
+>>>>>>> 70b01619787fa974981c89fe8d2aef863019362e
                     }
                 }
             }
@@ -78,7 +107,7 @@ public class Pickup : MonoBehaviour
                     transform.SetParent(hands[i]);
                     gameObject.transform.position = hands[i].transform.position;
                 }
-                else if(hands[i] != null)
+                else if (hands[i] != null)
                 {
                     hands[i] = null;
                 }
