@@ -40,8 +40,18 @@ public class Pickup : MonoBehaviour
                     if (hands[0] == null)
                     {
                         hands[0] = player.GetComponentInParent<Transform>().GetChild(0);
-                        transform.SetParent(hands[0]);
-                        gameObject.transform.position = hands[0].transform.position;
+                        if (hands[0].childCount == 0)
+                        {
+                            transform.SetParent(hands[0]);
+                            Debug.Log("Open hand");
+                            gameObject.transform.position = hands[0].transform.position;
+                        }
+
+                        else
+                        {
+                            hands[0] = null;
+                            player = null;
+                        }
                     }
                 }
             }
@@ -53,8 +63,17 @@ public class Pickup : MonoBehaviour
                     if (hands[1] == null)
                     {
                         hands[1] = player.GetComponentInParent<Transform>().GetChild(1);
-                        transform.SetParent(hands[1]);
-                        gameObject.transform.position = hands[1].transform.position;
+                        if (hands[1].childCount == 0)
+                        {
+
+                            transform.SetParent(hands[1]);
+                            gameObject.transform.position = hands[1].transform.position;
+                        }
+                        else
+                        {
+                            hands[1] = null;
+                            player = null;
+                        }
                     }
                 }
             }
@@ -76,7 +95,7 @@ public class Pickup : MonoBehaviour
                     transform.SetParent(hands[i]);
                     gameObject.transform.position = hands[i].transform.position;
                 }
-                else if(hands[i] != null)
+                else if (hands[i] != null)
                 {
                     hands[i] = null;
                 }
