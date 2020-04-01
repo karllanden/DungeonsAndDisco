@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float velocity;
+    float velocity, damage;
     
     Vector3 direction;
     //räknar ut hur långt kulan ska färdas denna frame
@@ -28,10 +28,15 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        
+        if(other.tag == "Player")
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.GetComponent<PlayerHealthScript>().takeDamage(damage);
+
+        }
     }
     //tar emot värden som bestämmer kulans "behavior" från vapnet
-    public void GetValues(Transform tf, float v, Vector3 dir)
+    public void GetValues(Transform tf, float v, Vector3 dir, float damage)
     {
         this.transform.rotation = tf.rotation;
         this.transform.position = tf.position;

@@ -11,7 +11,7 @@ public class GunShotScript : MonoBehaviour
     float shotSpeed = 50;
     Vector3 direction;
     GameObject target, hand;
-
+    [SerializeField] float damage;
     //Hittar kulornas mål och beräknar riktning
 
     void Update()
@@ -35,6 +35,6 @@ public class GunShotScript : MonoBehaviour
     {
         GameObject createBullet = GameObject.Instantiate(bullet);
         Bullet firedBullet = createBullet.GetComponent<Bullet>();
-        firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction);
+        firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
     }
 }
