@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class PlayerHealthScript : MonoBehaviour
 {
-    [SerializeField] float maxHealth, currentHealth;
-    //[Header("Unity Stuff")]
-    //public Image healthBar;
-    // Start is called before the first frame update
+    [SerializeField] public float maxHealth, currentHealth;
+
 
     public HealthBar healthBar;
+
 
     void Start()
     {
@@ -23,11 +22,11 @@ public class PlayerHealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         //healthBar.fillAmount = currentHealth / maxHealth;
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            takeDamage(10);
+            takeDamage(2);
         }
     }
 
