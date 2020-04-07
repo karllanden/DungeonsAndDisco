@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 {
     float velocity, damage;
     
+    float velocity;
+    public GameObject explosion;
+
     Vector3 direction;
     //räknar ut hur långt kulan ska färdas denna frame
     void Update()
@@ -14,7 +17,7 @@ public class Bullet : MonoBehaviour
 
         float distanceThisFrame = velocity * Time.deltaTime;
         transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-        
+
     }
 
     //bestämmer när en kollision händer och sedan hur kulan ska agera
@@ -23,6 +26,9 @@ public class Bullet : MonoBehaviour
         if (other.tag != "Player")
         {
             Destroy(this.gameObject);
+            GameObject createExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(createExplosion, 1.7f);
+
         }
         if (other.tag != "Gun")
         {
