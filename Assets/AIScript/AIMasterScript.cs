@@ -22,6 +22,8 @@ public class AIMasterScript : MonoBehaviour
     public Transform target;
     public Transform baseRotation;
 
+    float distance;
+
     public FieldOfView fieldOfViewSight;
     public FieldOfView fieldOfViewHearing;
 
@@ -30,10 +32,17 @@ public class AIMasterScript : MonoBehaviour
     private Vector3 rotation;
     public float RotationSpeed = 10f;
 
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform bulletSpawn;
+
+    float shotSpeed = 50;
+    Vector3 direction;
+    [SerializeField] float damage;
+
     void Start()
     {
         agent = this.GetComponent<NavMeshAgent>();
-        agentSpeed = agent.speed / 2; 
+        agentSpeed = agent.speed / 2;
         InvokeRepeating("GetNearestTarget", 0f, 0.1f);
         InvokeRepeating("SeekPatrolPath", 0f, 4.0f);
     }
@@ -42,7 +51,15 @@ public class AIMasterScript : MonoBehaviour
     {
         if (target != null)
         {
-            agent.SetDestination(target.position);
+            distance = Vector3.Distance(target.position, transform.position);
+            if (distance <= 10)
+            {
+                destination = transform;
+            }
+            if (distance >= 10)
+            {
+                agent.SetDestination(target.position);
+            }
         }
         if (target == null)
         {
@@ -58,18 +75,19 @@ public class AIMasterScript : MonoBehaviour
             return;
         }
 
-        Vector3 direction = target.position - transform.position;
+
+        direction = target.position - transform.position;
         Quaternion FindTargetRotation = Quaternion.LookRotation(direction);
         rotation = Quaternion.Lerp(baseRotation.rotation, FindTargetRotation, Time.deltaTime * RotationSpeed).eulerAngles;
         baseRotation.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
+        Shoot();
     }
     void GetNearestTarget()
     {
         target = null;
         if (fieldOfViewSight.visableTargets.Count > 0)
         {
-            target = fieldOfViewSight .visableTargets[0];
+            target = fieldOfViewSight.visableTargets[0];
         }
         if (fieldOfViewHearing.visableTargets.Count > 0)
         {
@@ -99,5 +117,12 @@ public class AIMasterScript : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, fieldOfViewSight.viewRadius);
+    }
+
+    void Shoot()
+    {
+        GameObject createBullet = GameObject.Instantiate(bullet);
+        Bullet firedBullet = createBullet.GetComponent<Bullet>();
+        firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
     }
 }
