@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     float velocity, damage;
     
-    float velocity;
+    //float velocity;
     public GameObject explosion;
 
     Vector3 direction;
