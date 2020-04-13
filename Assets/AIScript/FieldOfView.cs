@@ -12,6 +12,8 @@ public class FieldOfView : MonoBehaviour
     public LayerMask layerWalls;
     public LayerMask layerPlayer;
 
+    public bool directLineOfSight;
+
     public List<Transform> visableTargets = new List<Transform>();
 
     void Start()
@@ -42,6 +44,7 @@ public class FieldOfView : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, layerWalls))
                 {
                     visableTargets.Add(target);
+                    //directLineOfSight = true;
                 }
             }
         }
