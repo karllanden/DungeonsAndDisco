@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+<<<<<<< Updated upstream
     float velocity;
+=======
+    float velocity, damage;
+>>>>>>> Stashed changes
     public GameObject explosion;
 
     Vector3 direction;
