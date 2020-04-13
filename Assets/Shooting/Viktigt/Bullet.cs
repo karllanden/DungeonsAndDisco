@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.GetComponent<PlayerHealthScript>().takeDamage(damage);
