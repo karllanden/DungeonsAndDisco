@@ -5,8 +5,6 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     float velocity, damage;
-    
-    //float velocity;
     public GameObject explosion;
 
     Vector3 direction;
@@ -34,7 +32,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.GetComponent<PlayerHealthScript>().takeDamage(damage);
