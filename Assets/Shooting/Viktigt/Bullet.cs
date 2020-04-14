@@ -47,4 +47,8 @@ public class Bullet : MonoBehaviour
         velocity = v;
         direction = dir;
     }
+    public void ChangeDirection(Vector3 newDirection)
+    {
+        direction = newDirection;
+    }
 }
