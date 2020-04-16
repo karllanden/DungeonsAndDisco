@@ -49,6 +49,7 @@ public class Pickup : MonoBehaviour
                             hands[0] = null;
                             player = null;
                         }
+
                     }
                 }
             }

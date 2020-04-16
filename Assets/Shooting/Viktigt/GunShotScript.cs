@@ -13,28 +13,30 @@ public class GunShotScript : MonoBehaviour
     Vector3 direction;
     GameObject target, hand;
     [SerializeField] float damage;
-    bool isPlayer;
+    public bool isPlayer;
     //Hittar kulornas mål och beräknar riktning
 
     void Update()
     {
-        if (isPlayer)
-        {
-            target = GameObject.FindGameObjectWithTag("Target");
+        direction = transform.forward;
+        
+        //if (isPlayer)
+        //{
+        //    target = GameObject.FindGameObjectWithTag("Target");
 
-            direction = target.transform.position - this.transform.position;
-            timeSinceLastShot += Time.deltaTime;
-            //Försöker avfyra en kula
-            if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
-            {
-                Shoot();
-                timeSinceLastShot = 0;
-            }
-        }
-        else
-        {
-            direction = transform.forward;
-        }
+        //    direction = target.transform.position - this.transform.position;
+        //    timeSinceLastShot += Time.deltaTime;
+        //    //Försöker avfyra en kula
+        //    if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
+        //    {
+        //        Shoot();
+        //        timeSinceLastShot = 0;
+        //    }
+        //}
+        //else
+        //{
+        //    direction = transform.forward;
+        //}
     }
     //Om en kula kan avfyras skapas den och ges värden
     public void Shoot()
