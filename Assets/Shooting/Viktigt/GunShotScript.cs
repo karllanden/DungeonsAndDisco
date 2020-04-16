@@ -19,11 +19,19 @@ public class GunShotScript : MonoBehaviour
     void Update()
     {
         direction = transform.forward;
+<<<<<<< HEAD
         
         //if (isPlayer)
         //{
         //    target = GameObject.FindGameObjectWithTag("Target");
 
+=======
+
+        //if (isPlayer)
+        //{
+        //    target = GameObject.FindGameObjectWithTag("Target");
+
+>>>>>>> LevelDesign
         //    direction = target.transform.position - this.transform.position;
         //    timeSinceLastShot += Time.deltaTime;
         //    //Försöker avfyra en kula

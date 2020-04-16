@@ -4929,8 +4929,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0234f31d45a353a45ba23810a9371e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 0}
+  bullet: {fileID: 1462277722955410226, guid: cd38ce045632a3a49a464c2fd18c9ca5, type: 3}
   bulletSpawn: {fileID: 4046858447665524363}
   maxAmmo: 30
   currentAmmo: 30
+  shotSpeed: 50
   damage: 0
+  isPlayer: 0

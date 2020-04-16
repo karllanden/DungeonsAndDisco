@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+<<<<<<< HEAD
     [SerializeField]GameObject[] allWeapons;
     [SerializeField]GunShotScript weapon;
+=======
+    [SerializeField] GameObject[] allWeapons;
+    [SerializeField] GunShotScript weapon;
+>>>>>>> LevelDesign
     GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
     GameObject target;
     Pickup pickUp;
@@ -27,7 +32,11 @@ public class PlayerController : MonoBehaviour
         timeSinceLastShot += Time.deltaTime;
 
         if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
+<<<<<<< HEAD
         {            
+=======
+        {
+>>>>>>> LevelDesign
             allWeapons = GameObject.FindGameObjectsWithTag("Gun");
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             //weapon = GameObject.Find("Pistol").GetComponent<GunShotScript>();
@@ -36,13 +45,23 @@ public class PlayerController : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Target");
 
         direction = target.transform.position - this.transform.position;
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> LevelDesign
         //Försöker avfyra en kula
         if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
         {
             weapon.Shoot();
             timeSinceLastShot = 0;
         }
+<<<<<<< HEAD
         
     }
 }
+=======
+
+    }
+}
+>>>>>>> LevelDesign
