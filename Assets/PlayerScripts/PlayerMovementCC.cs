@@ -14,7 +14,7 @@ public class PlayerMovementCC : MonoBehaviour
 
 
 
-    void Update()
+    void FixedUpdate()
     {
 
         

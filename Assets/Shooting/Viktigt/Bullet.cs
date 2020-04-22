@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
 
     Vector3 direction;
     //räknar ut hur långt kulan ska färdas denna frame
-    void Update()
+    void FixedUpdate()
     {
 
 
