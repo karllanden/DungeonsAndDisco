@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/HampusScene.unity
+    guid: 389a893bc83b1254cabf045c71e46d2c
   m_configObjects: {}

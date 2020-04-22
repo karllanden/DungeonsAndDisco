@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]GameObject[] allWeapons;
     [SerializeField]GunShotScript weapon;
-    GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+    GameObject[] allEnemies;
     GameObject target;
     Pickup pickUp;
     float pickupRadius = 5;
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         fireCd = 0.2f;
+        allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     // Update is called once per frame
