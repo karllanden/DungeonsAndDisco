@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Target
   - Gun
+  - Enemy
   layers:
   - Default
   - TransparentFX
