@@ -26,6 +26,7 @@ public class GunShotScript : MonoBehaviour
         {
             Shoot();
             timeSinceLastShot = 0;
+            FindObjectOfType<AudioManager>().Play("PistolShot");
         }
        
 
