@@ -20,23 +20,18 @@ public class GunShotScript : MonoBehaviour
     {
         direction = transform.forward;
         
-        //if (isPlayer)
-        //{
-        //    target = GameObject.FindGameObjectWithTag("Target");
+ 
+        target = GameObject.FindGameObjectWithTag("Target");
 
-        //    direction = target.transform.position - this.transform.position;
-        //    timeSinceLastShot += Time.deltaTime;
-        //    //Försöker avfyra en kula
-        //    if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
-        //    {
-        //        Shoot();
-        //        timeSinceLastShot = 0;
-        //    }
-        //}
-        //else
-        //{
-        //    direction = transform.forward;
-        //}
+        direction = target.transform.position - this.transform.position;
+        timeSinceLastShot += Time.deltaTime;
+        //Försöker avfyra en kula
+        if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
+        {
+            Shoot();
+            timeSinceLastShot = 0;
+            FindObjectOfType<AudioManager>().Play("PistolShot");
+        }
     }
     //Om en kula kan avfyras skapas den och ges värden
     public void Shoot()
