@@ -5,11 +5,13 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public GameObject player;
+
     float xaxis, zaxis, yaxis;
     bool moveRight, moveLeft, moveUp, moveDown;
     public int camSpeed = 2;
     public Vector3 offset;
     public Vector3 camAngle;
+    public Camera cam;
     // Update is called once per frame
     //private void KeyInput()
     //{
