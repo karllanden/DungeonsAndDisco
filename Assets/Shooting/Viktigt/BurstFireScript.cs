@@ -9,7 +9,7 @@ public class BurstFireScript : MonoBehaviour
     float fireCd = 0.07f, timeSinceLastShot = 0;
     [SerializeField] float damage;
     [SerializeField] Transform bulletSpawn;
-    float shotSpeed = 15;
+    float shotSpeed = 50;
     Vector3 direction;
     GameObject target;
     bool burst = false;
