@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]GameObject[] allWeapons;
-    [SerializeField]GunShotScript weapon;
+    [SerializeField] GameObject[] allWeapons;
+    [SerializeField] GameObject weapon;
     GameObject[] allEnemies;
     GameObject target;
     Pickup pickUp;
-    float pickupRadius = 5;
+    float pickupRadius = 10;
     Vector3 direction;
     [SerializeField] float fireCd = 4f;
     [SerializeField] float timeSinceLastShot = 0;
@@ -26,24 +26,63 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         timeSinceLastShot += Time.deltaTime;
-
         if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
-        {            
-            allWeapons = GameObject.FindGameObjectsWithTag("Gun");
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            //weapon = GameObject.Find("Pistol").GetComponent<GunShotScript>();
-            weapon = allWeapons[0].GetComponent<GunShotScript>();
-        }
+            IdentifyWeaponOnPickup();
+
+
         target = GameObject.FindGameObjectWithTag("Target");
 
         direction = target.transform.position - this.transform.position;
-        
+
         //Försöker avfyra en kula
         if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
         {
-            weapon.Shoot();
+            if (weapon.GetComponent<GunShotScript>())
+            {
+                weapon.GetComponent<GunShotScript>().Shoot();
+            }
+            else if (weapon.GetComponent<ShotGunScript>())
+            {
+                weapon.GetComponent<ShotGunScript>().Shoot();
+            }
+            else if (weapon.GetComponent<BurstFireScript>())
+            {
+                weapon.GetComponent<BurstFireScript>().Shoot();
+            }
+
             timeSinceLastShot = 0;
         }
-        
+
+    }
+
+    //Letar upp vilket objekt som placeras i handen
+    private void IdentifyWeaponOnPickup()
+    {
+
+
+        allWeapons = GameObject.FindGameObjectsWithTag("Gun");
+        float distanceToCurrentClosestWeapon = Mathf.Infinity;
+        GameObject tempWeaponSelected = new GameObject();
+        foreach (GameObject g in allWeapons)
+        {
+            Vector3 distanceToNextWeapon = g.transform.position - gameObject.transform.position;
+            if (distanceToCurrentClosestWeapon > distanceToNextWeapon.magnitude)
+            {
+                distanceToCurrentClosestWeapon = distanceToNextWeapon.magnitude;
+                if (distanceToCurrentClosestWeapon < pickupRadius)
+                {
+                    tempWeaponSelected = g;
+                }
+
+            }
+        }
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //weapon = GameObject.Find("Pistol").GetComponent<GunShotScript>();
+        if (tempWeaponSelected != null)
+        {
+            weapon = tempWeaponSelected;
+        }
+
+
     }
 }
