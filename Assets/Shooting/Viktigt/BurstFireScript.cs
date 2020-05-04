@@ -8,7 +8,8 @@ public class BurstFireScript : MonoBehaviour
     public int maxAmmo, currentAmmo;
     float fireCd = 0.07f, timeSinceLastShot = 0;
     [SerializeField] float damage;
-    float shotSpeed = 15;
+    [SerializeField] Transform bulletSpawn;
+    float shotSpeed = 50;
     Vector3 direction;
     GameObject target;
     bool burst = false;
@@ -53,11 +54,11 @@ public class BurstFireScript : MonoBehaviour
             }
         }
     }
-    void Shoot()
+    public void Shoot()
     {
 
         GameObject createBullet = GameObject.Instantiate(bullet);
         Bullet firedBullet = createBullet.GetComponent<Bullet>();
-        firedBullet.GetValues(this.transform, shotSpeed, direction, damage);
+        firedBullet.GetValues(bulletSpawn, shotSpeed, direction, damage);
     }
 }

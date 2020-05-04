@@ -12,23 +12,24 @@ public class ShotGunScript : MonoBehaviour
     float shotSpeed = 30;
     Vector3 direction;
     GameObject target;
+    [SerializeField] Transform bulletSpawn;
 
     // Update is called once per frame
     void Update()
     {
         target = GameObject.FindGameObjectWithTag("Target");
 
-        direction = target.transform.position - this.transform.position;
-        timeSinceLastShot += Time.deltaTime;
+        //direction = target.transform.position - this.transform.position;
+        //timeSinceLastShot += Time.deltaTime;
 
-        if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
-        {
-            Shoot(target);
-            timeSinceLastShot = 0;
-        }
+        //if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
+        //{
+        //    Shoot(target);
+        //    timeSinceLastShot = 0;
+        //}
     }
 
-    void Shoot(GameObject target)
+    public void Shoot()
     {
         //Skapa 5 kulor       
         GameObject[] createBullets = new GameObject[5];
@@ -36,16 +37,16 @@ public class ShotGunScript : MonoBehaviour
         {
             createBullets[i] = GameObject.Instantiate(bullet, this.direction, this.transform.rotation);
             Bullet tempObject = createBullets[i].GetComponent<Bullet>();
-            tempObject.GetValues(transform, shotSpeed, direction, damage);
+            tempObject.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
         }
         //Ge alla kulor en unik rikting inom en viss spridning från där man siktar
-        float angle = 5;
+        float angle = 15;
         foreach (GameObject g in createBullets)
         {
             Bullet tempObject = g.GetComponent<Bullet>();
             tempObject.transform.Rotate(new Vector3(0, angle, 0));
             tempObject.ChangeDirection(tempObject.transform.forward);
-            angle -= 2.5f;
+            angle -= 7.5f;
         }
     }
 }
