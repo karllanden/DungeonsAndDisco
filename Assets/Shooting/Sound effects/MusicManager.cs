@@ -10,6 +10,7 @@ public class MusicManager : MonoBehaviour
 
     public Music[] musicColletion;
     public AudioSource audioManager;
+    Music lastPlayedMusic, currentMusic;
     void Awake()
     {
         audioManager = GetComponent<AudioSource>();
@@ -27,8 +28,14 @@ public class MusicManager : MonoBehaviour
     public void Play(string name)
     {
         Music m = Array.Find(musicColletion, music => music.name == name);
-        audioManager = m.source;
-        audioManager.Play();
+        if (currentMusic != m)
+        {
+            currentMusic = m;
+            audioManager = m.source;
+            audioManager.Play();
+        }
+
+
     }
 
     //public void Stop(string name)
