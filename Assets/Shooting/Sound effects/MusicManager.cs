@@ -14,34 +14,20 @@ public class MusicManager : MonoBehaviour
     void Awake()
     {
         audioManager = GetComponent<AudioSource>();
-        foreach (Music music in musicColletion)
-        {
-            music.source = gameObject.AddComponent<AudioSource>();
-            music.source.name = music.name;
-            music.source.clip = music.clip;
-            music.source.pitch = music.pitch;
-            music.source.volume = music.volume;
-        }
     }
 
-    // Update is called once per frame
     public void Play(string name)
     {
         Music m = Array.Find(musicColletion, music => music.name == name);
-        if (currentMusic != m)
+        if (lastPlayedMusic != m)
         {
-            currentMusic = m;
-            audioManager = m.source;
+            lastPlayedMusic = m;
+            audioManager.clip = m.clip;
+            audioManager.pitch = m.pitch;
+            audioManager.volume = m.volume;
             audioManager.Play();
         }
 
 
     }
-
-    //public void Stop(string name)
-    //{
-    //    Music m = Array.Find(musicColletion, music => music.name == name);
-    //    audioManager = m.source;
-    //    audioManager.Stop();
-    //}
 }
