@@ -7,12 +7,18 @@ public class AiCombat : AiProcessing
     [SerializeField]
     GunShotScript weapon;
     [SerializeField] float damage;
+    [SerializeField] AudioManager audioManager;
+
+    [SerializeField] public float currentHealth;
+
+    [SerializeField]
+    public GameObject DeathAnimation;
 
     float fireCd = 0.2f, timeSinceLastShot = 0, shotSpeed = 50;
     
     void Start()
     {
-        
+        currentHealth = 5;
     }
 
     // Update is called once per frame
@@ -38,7 +44,26 @@ public class AiCombat : AiProcessing
         if (/*fieldOfViewSight.directLineOfSight == true && */timeSinceLastShot > fireCd)
         {
             weapon.Shoot();
+            audioManager.Play("PistolShot");
             timeSinceLastShot = 0;
         }
+    }
+    public void takeDamage(float damageTaken)
+    {
+        currentHealth -= damageTaken;
+
+
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Vector3 pos = this.transform.position;
+        DeathAnimation = GameObject.Instantiate(DeathAnimation, pos, Quaternion.identity);
+        this.gameObject.SetActive(false);
     }
 }

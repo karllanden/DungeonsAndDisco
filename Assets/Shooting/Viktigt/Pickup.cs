@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Pickup : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class Pickup : MonoBehaviour
     public GameObject player;
 
     public Transform[] hands;
+    [SerializeField]
+    public Image WeaponIconE;
     void Start()
     {
         hands = new Transform[2];
+        WeaponIconE.enabled = false;
     }
 
     // Update is called once per frame
@@ -20,6 +24,8 @@ public class Pickup : MonoBehaviour
             InventoryPickUp();
 
         InventorySwitch();
+
+
     }
     //Söker efter Spelaren och kollar om spelarens child objekt (LeftHand och RightHand) har inga child objekts
     void InventoryPickUp()
@@ -67,6 +73,11 @@ public class Pickup : MonoBehaviour
                             transform.SetParent(hands[1]);
                             gameObject.transform.position = hands[1].transform.position;
                             gameObject.transform.rotation = hands[1].transform.rotation;
+
+                            if (gameObject.name == ("Pistol") || gameObject.name == ("Pistol1"))
+                            {
+                                WeaponIconE.enabled = true;
+                            }
                         }
                         else
                         {

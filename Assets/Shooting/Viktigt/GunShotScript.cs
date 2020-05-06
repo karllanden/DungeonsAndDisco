@@ -40,6 +40,6 @@ public class GunShotScript : MonoBehaviour
         //JeffsBullets firedBullet = createBullet.GetComponent<JeffsBullets>();
         Bullet firedBullet = createBullet.GetComponent<Bullet>();
         firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
-        FindObjectOfType<AudioManager>().Play("PistolShot");
+        //FindObjectOfType<AudioManager>().Play("PistolShot");
     }
 }

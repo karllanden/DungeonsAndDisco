@@ -10,9 +10,18 @@ public class ShotGunScript : MonoBehaviour
     [SerializeField] float fireCd = 0.6f, damage;
     float timeSinceLastShot = 0;
     float shotSpeed = 30;
+    [SerializeField]float startAngle = 15;
+    float angle;
+    float spread;
     Vector3 direction;
     GameObject target;
     [SerializeField] Transform bulletSpawn;
+
+    void Start()
+    {
+        angle = startAngle;
+        spread = angle / 2;
+    }
 
     // Update is called once per frame
     void Update()
@@ -40,13 +49,15 @@ public class ShotGunScript : MonoBehaviour
             tempObject.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
         }
         //Ge alla kulor en unik rikting inom en viss spridning från där man siktar
-        float angle = 15;
+     
         foreach (GameObject g in createBullets)
         {
             Bullet tempObject = g.GetComponent<Bullet>();
             tempObject.transform.Rotate(new Vector3(0, angle, 0));
             tempObject.ChangeDirection(tempObject.transform.forward);
-            angle -= 7.5f;
+            angle -= spread;
+            
         }
+        angle = startAngle;
     }
 }

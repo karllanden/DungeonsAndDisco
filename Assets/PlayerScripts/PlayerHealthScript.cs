@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class PlayerHealthScript : MonoBehaviour
 {
     [SerializeField] public float maxHealth, currentHealth;
+    [SerializeField] public GameObject DeathAnimation;
+    [SerializeField]
+    public GameObject PlayerObject;
 
 
     public HealthBar healthBar;
@@ -44,7 +47,9 @@ public class PlayerHealthScript : MonoBehaviour
 
     void Die()
     {
-
+        Vector3 pos = PlayerObject.transform.position;
+        DeathAnimation = GameObject.Instantiate(DeathAnimation, pos, Quaternion.identity);
+        PlayerObject.SetActive(false);
     }
 
     public void Heal()

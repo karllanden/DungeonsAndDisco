@@ -35,6 +35,15 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
 
         }
+        if (other.tag == "Enemy")
+        {
+            //GameObject player = GameObject.FindGameObjectWithTag("Player");
+            //player.GetComponent<PlayerHealthScript>().takeDamage(damage);
+            GameObject Enemy = other.gameObject;
+            Enemy.GetComponentInParent<AiCombat>().takeDamage(damage);
+            Destroy(gameObject);
+
+        }
         if (!other.gameObject.GetComponent<Bullet>())
         {
 
