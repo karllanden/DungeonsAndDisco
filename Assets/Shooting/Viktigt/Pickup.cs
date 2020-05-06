@@ -25,6 +25,8 @@ public class Pickup : MonoBehaviour
 
         InventorySwitch();
 
+        //Drop();
+
 
     }
     //Söker efter Spelaren och kollar om spelarens child objekt (LeftHand och RightHand) har inga child objekts
@@ -114,4 +116,20 @@ public class Pickup : MonoBehaviour
             }
         }
     }
+
+    //public void Drop()
+    //{
+    //    if (Input.GetKey(KeyCode.C))
+    //    {
+            
+    //        //player.transform.DetachChildren();
+            
+    //        Transform tempObject = transform.parent;
+    //        tempObject.DetachChildren();
+    //        player = null;
+
+
+
+    //    }
+    //}
 }

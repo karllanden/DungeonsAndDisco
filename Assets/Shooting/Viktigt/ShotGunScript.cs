@@ -59,5 +59,6 @@ public class ShotGunScript : MonoBehaviour
             
         }
         angle = startAngle;
+        Debug.Log("dafuq");
     }
 }
