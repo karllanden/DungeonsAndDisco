@@ -5012,6 +5012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   hands: []
+  WeaponIconE: {fileID: 0}
 --- !u!114 &3196727806743046958
 MonoBehaviour:
   m_ObjectHideFlags: 0

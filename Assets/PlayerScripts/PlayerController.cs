@@ -40,6 +40,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        PistolIconQ.enabled = false;
+        PistolIconE.enabled = false;
+        ShotgunIconQ.enabled = false;
+        ShotgunIconE.enabled = false;
+        BurstIconQ.enabled = false;
+        BurstIconE.enabled = false;
+        AKIconQ.enabled = false;
+        AKIconE.enabled = false;
     }
 
     // Update is called once per frame
@@ -60,6 +68,7 @@ public class PlayerController : MonoBehaviour
         if (weapon != null) //chech if player has weapon equipped.
         {
             UpdateHUD();
+            UpdateHUDimage();
             ReloadQ(); //try reload Q
             ReloadE(); //try reload E
 
@@ -146,12 +155,10 @@ public class PlayerController : MonoBehaviour
     {
         if (handQ.GetComponentInChildren<GunShotScript>())
         {
-           
             PistolIconQ.enabled = true;
             ShotgunIconQ.enabled = false;
             BurstIconQ.enabled = false;
             AKIconQ.enabled = false;
-            
         }
         if (handQ.GetComponentInChildren<ShotGunScript>())
         {
@@ -166,6 +173,28 @@ public class PlayerController : MonoBehaviour
             ShotgunIconQ.enabled = false;
             BurstIconQ.enabled = true;
             AKIconQ.enabled = false;
+        }
+
+        if (handE.GetComponentInChildren<GunShotScript>())
+        {
+            PistolIconE.enabled = true;
+            ShotgunIconE.enabled = false;
+            BurstIconE.enabled = false;
+            AKIconE.enabled = false;
+        }
+        if (handE.GetComponentInChildren<ShotGunScript>())
+        {
+            PistolIconE.enabled = false;
+            ShotgunIconE.enabled = true;
+            BurstIconE.enabled = false;
+            AKIconE.enabled = false;
+        }
+        if (handE.GetComponentInChildren<BurstFireScript>())
+        {
+            PistolIconE.enabled = false;
+            ShotgunIconE.enabled = false;
+            BurstIconE.enabled = true;
+            AKIconE.enabled = false;
         }
     }
     private void UpdateWeaponStatsQ()

@@ -10,11 +10,11 @@ public class Pickup : MonoBehaviour
 
     public Transform[] hands;
     [SerializeField]
-    public Image WeaponIconE;
+    //public Image WeaponIconE;
     void Start()
     {
         hands = new Transform[2];
-        WeaponIconE.enabled = false;
+        //WeaponIconE.enabled = false;
     }
 
     // Update is called once per frame
@@ -76,10 +76,10 @@ public class Pickup : MonoBehaviour
                             gameObject.transform.position = hands[1].transform.position;
                             gameObject.transform.rotation = hands[1].transform.rotation;
 
-                            if (gameObject.name == ("Pistol") || gameObject.name == ("Pistol1"))
-                            {
-                                WeaponIconE.enabled = true;
-                            }
+                            //if (gameObject.name == ("Pistol") || gameObject.name == ("Pistol1"))
+                            //{
+                            //    WeaponIconE.enabled = true;
+                            //}
                         }
                         else
                         {
