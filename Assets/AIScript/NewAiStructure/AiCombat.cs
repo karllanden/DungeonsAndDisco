@@ -24,16 +24,16 @@ public class AiCombat : AiProcessing
         }
         if (isCivilian == true || isRetreating == true)
         {
-            Flee();
+            FleeBehavior();
         }
 
     }
-    void Flee()
-    {
-        FleeBehavior();
-    }
     void CombatBehaivor()
     {
+        if (isArmed == false)
+        {
+            return;
+        }
         timeSinceLastShot += Time.deltaTime;
         if (/*fieldOfViewSight.directLineOfSight == true && */timeSinceLastShot > fireCd)
         {
