@@ -8,11 +8,12 @@ public class AiCombat : AiProcessing
     GunShotScript weapon;
     [SerializeField] float damage;
 
+
     float fireCd = 0.2f, timeSinceLastShot = 0, shotSpeed = 50;
     
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -41,4 +42,6 @@ public class AiCombat : AiProcessing
             timeSinceLastShot = 0;
         }
     }
+
+
 }

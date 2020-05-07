@@ -32,6 +32,13 @@ public class AiProcessing : MonoBehaviour
     protected float RotationSpeed = 10f;
 
 
+    [SerializeField]
+    public float currentHealth;
+
+    [SerializeField]
+    public GameObject DeathAnimation;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +65,8 @@ public class AiProcessing : MonoBehaviour
         {
             aiMovement.inCombat = false;
         }
+
+        currentHealth = 5f;
     }
 
     // Update is called once per frame
@@ -65,6 +74,26 @@ public class AiProcessing : MonoBehaviour
     {
 
     }
+
+    public void takeDamage(float damageTaken)
+    {
+        currentHealth -= damageTaken;
+
+
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Vector3 pos = this.transform.position;
+        DeathAnimation = GameObject.Instantiate(DeathAnimation, pos, Quaternion.identity);
+        this.gameObject.SetActive(false);
+    }
+
     void CheckIfIsArmed()
     {
         if (weaponGameObject == null)

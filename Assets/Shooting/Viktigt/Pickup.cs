@@ -20,6 +20,13 @@ public class Pickup : MonoBehaviour
             InventoryPickUp();
 
         InventorySwitch();
+        if (transform.parent == null)
+        {
+            player = null;
+        }
+
+            Drop();
+        
     }
     //Söker efter Spelaren och kollar om spelarens child objekt (LeftHand och RightHand) har inga child objekts
     void InventoryPickUp()
@@ -82,7 +89,23 @@ public class Pickup : MonoBehaviour
 
 
     }
+    public void Drop()
+    {
+        if (Input.GetKey(KeyCode.C) && hands[0] != null)
+        {
+            Transform tempObject = transform.parent;
+            tempObject.DetachChildren();
+            hands[0] = null;
 
+        }
+        if (Input.GetKey(KeyCode.V) && hands[1] != null)
+        {
+            Transform tempObject = transform.parent;
+            tempObject.DetachChildren();
+            hands[1] = null;
+
+        }
+    }
     //När vapnen är uppplockad ska vapnen kolla om vilken hand är parent objekten och bytta till den andra hand parent
     void InventorySwitch()
     {

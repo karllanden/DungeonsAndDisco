@@ -35,6 +35,20 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
 
         }
+        if (other.tag == "Enemy")
+        {
+            //GameObject player = GameObject.FindGameObjectWithTag("Player");
+            //player.GetComponent<PlayerHealthScript>().takeDamage(damage);
+            //GameObject Enemy = other.gameObject;
+            if (other.GetComponent<AiProcessing>())
+            {
+                other.GetComponent<AiProcessing>().takeDamage(damage);
+            }
+            Destroy(gameObject);
+            
+            
+
+        }
         if (!other.gameObject.GetComponent<Bullet>())
         {
 
@@ -51,6 +65,14 @@ public class Bullet : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+        //else if (other.gameObject.GetComponent<Bullet>())
+        //{
+
+        //    Destroy(this.gameObject);
+        //    GameObject createExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
+        //    Destroy(createExplosion, 1.7f);
+
+        //}
     }
     //tar emot värden som bestämmer kulans "behavior" från vapnet
     public void GetValues(Transform tf, float v, Vector3 dir, float damage)
