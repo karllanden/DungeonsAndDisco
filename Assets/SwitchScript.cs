@@ -12,9 +12,11 @@ public class SwitchScript : MonoBehaviour
     [SerializeField]
     private GameObject armDown;
     [SerializeField]
-    private GameObject door;
+    private GameObject Unlockobject1;
     [SerializeField]
-    private GameObject roof;
+    private GameObject Unlockobject2;
+    [SerializeField]
+    private GameObject Unlockobject3;
 
     bool switchActive;
     bool SwitchPulled;
@@ -34,16 +36,20 @@ public class SwitchScript : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 SwitchPulled = true;
                 armUp.SetActive(false);
                 armDown.SetActive(true);
                 UIElement.SetActive(false);
-                door.transform.position += new Vector3(0, -4, 0);
-                if (roof != null)
+                Unlockobject1.transform.position += new Vector3(0, -4, 0);
+                if (Unlockobject2 != null)
                 {
-                    roof.SetActive(false);
+                    Unlockobject2.SetActive(false);
+                }
+                if (Unlockobject3 != null)
+                {
+                    Unlockobject3.SetActive(false);
                 }
             }
         }

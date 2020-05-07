@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
+
         timeSinceLastShotQ += Time.deltaTime;
         timeSinceLastShotE += Time.deltaTime;
         if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
@@ -75,6 +77,16 @@ public class PlayerController : MonoBehaviour
 
         direction = target.transform.position - this.transform.position;
 
+        float distancePlayerTarget = Vector3.Distance(this.transform.position, target.transform.position);
+
+        if (distancePlayerTarget < 3)
+        {
+        }
+        else
+        {
+            handE.transform.LookAt(target.transform);
+            handQ.transform.LookAt(target.transform);
+        }
 
         if (weapon != null) //chech if player has weapon equipped.
         {
@@ -383,7 +395,7 @@ public class PlayerController : MonoBehaviour
             if (reloadTimeCountE > reloadTimeE) //reset (reload)
             {
                 handE.GetComponentInChildren<GunShotScript>().currentAmmo = handE.GetComponentInChildren<GunShotScript>().maxAmmo;
-                reloadTimeCountQ = 0;
+                reloadTimeCountE = 0;
             }
         }
         if (handE.GetComponentInChildren<ShotGunScript>())

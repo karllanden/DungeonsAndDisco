@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 3453122206735484094}
   m_Layer: 0
   m_Name: DiscoCivilian_W_Jacket
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,7 +297,12 @@ MonoBehaviour:
   fieldOfViewHearing: {fileID: 0}
   target: {fileID: 0}
   weaponGameObject: {fileID: 0}
-  patrolPathsArray: []
+  currentHealth: 5
+  DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
+    type: 3}
+  patrolPathsArray:
+  - {fileID: 0}
+  - {fileID: 0}
   baseRotation: {fileID: 2672583864294824450}
   fleePoint: {fileID: 0}
 --- !u!114 &3453122206735484094
@@ -319,6 +324,9 @@ MonoBehaviour:
   fieldOfViewHearing: {fileID: 3453122208012784868}
   target: {fileID: 0}
   weaponGameObject: {fileID: 0}
+  currentHealth: 5
+  DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
+    type: 3}
 --- !u!114 &3453122208012784868
 MonoBehaviour:
   m_ObjectHideFlags: 0

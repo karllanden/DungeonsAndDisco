@@ -41,7 +41,10 @@ public class AiMovement : AiProcessing
                 FleeBehavior();
                 FleeMovement();
             }
-            CombatMovementBehavior();
+            else
+            {
+                CombatMovementBehavior();
+            }
         }
 
         if (isRetreating && isCivilian)
@@ -50,10 +53,10 @@ public class AiMovement : AiProcessing
             FleeMovement();
         }
 
-        if (isCivilian == true)
-        {
-            //Dance
-        }
+        //if (isCivilian == true)
+        //{
+        //    //Dance
+        //}
         else
         {
             PatrolMovementBehavior();
