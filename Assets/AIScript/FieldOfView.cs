@@ -12,7 +12,7 @@ public class FieldOfView : MonoBehaviour
     public LayerMask layerWalls;
     public LayerMask layerPlayer;
 
-    public bool directLineOfSight;
+    private bool directLineOfSight;
 
     public List<Transform> visableTargets = new List<Transform>();
 

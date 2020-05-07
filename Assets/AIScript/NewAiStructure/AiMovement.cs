@@ -6,12 +6,18 @@ using UnityEngine.AI;
 
 public class AiMovement : AiProcessing
 {
-    public Transform[] patrolPathsArray;
-    public Transform nearestPatrolPoint;
+    [SerializeField]
+    private Transform[] patrolPathsArray;
+    private Transform nearestPatrolPoint;
     private int nearestPartolNumber;
-    public bool atDestination;
-    public Transform baseRotation;
+    private bool atDestination;
+
+    [SerializeField]
+    private Transform baseRotation;
     NavMeshAgent agent;
+
+    [SerializeField]
+    private Transform fleePoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,15 +36,23 @@ public class AiMovement : AiProcessing
     {
         if (inCombat == true)
         {
-            if (isRetreating)
+            if (isRetreating || isCivilian)
             {
                 FleeBehavior();
+                FleeMovement();
             }
             CombatMovementBehavior();
         }
-        if (isCivilian)
+
+        if (isRetreating && isCivilian)
         {
             FleeBehavior();
+            FleeMovement();
+        }
+
+        if (isCivilian == true)
+        {
+            //Dance
         }
         else
         {
@@ -53,11 +67,16 @@ public class AiMovement : AiProcessing
             return;
         }
         distance = Vector3.Distance(destination.position, transform.position);
-        if (distance <= 1)
+        if (distance <= 2)
         {
             atDestination = true;
         }
     }
+    void FleeMovement()
+    {
+        agent.SetDestination(fleePoint.position);
+    }
+
     void CombatMovementBehavior()
     {
         if (target == null)
@@ -82,6 +101,10 @@ public class AiMovement : AiProcessing
     }
     void PatrolMovementBehavior()
     {
+        if (patrolPathsArray.Length <= 0)
+        {
+            return;
+        }
         if (target == null && atDestination == true)
         {
             agent.ResetPath();

@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class AiProcessing : MonoBehaviour
 {
     protected bool inCombat, isRetreating, targetSpotted, isArmed;
+    [SerializeField]
     protected bool isCivilian;
     //protected static NavMeshAgent agent;
     protected float patrolSpeed;
@@ -23,14 +24,13 @@ public class AiProcessing : MonoBehaviour
 
     protected float distance;
     protected Transform destination;
-
-    public GameObject weaponGameObject;
+    [SerializeField]
+    private GameObject weaponGameObject;
 
     protected Vector3 direction;
     protected Vector3 rotation;
     protected float RotationSpeed = 10f;
 
-    protected Transform fleePoint;
 
 
     // Start is called before the first frame update
@@ -41,6 +41,23 @@ public class AiProcessing : MonoBehaviour
         InvokeRepeating("GetNearestTarget", 0f, 0.1f);
         InvokeRepeating("LookAround", 0f, 0.5f);
         CheckIfIsArmed();
+        if (aicombat != null)
+        {
+            aicombat.isCivilian = isCivilian;
+        }
+        if (aiMovement != null)
+        {
+            aiMovement.isCivilian = isCivilian;
+        }
+        inCombat = false;
+        if (aicombat != null)
+        {
+            aicombat.inCombat = false;
+        }
+        if (aiMovement != null)
+        {
+            aiMovement.inCombat = false;
+        }
     }
 
     // Update is called once per frame
@@ -50,13 +67,21 @@ public class AiProcessing : MonoBehaviour
     }
     void CheckIfIsArmed()
     {
-        if (weaponGameObject != null)
+        if (weaponGameObject == null)
         {
             isArmed = false;
+            if (aicombat != null)
+            {
+                aicombat.isArmed = false;
+            }
         }
         else
         {
             isArmed = true;
+            if (aicombat != null)
+            {
+                aicombat.isArmed = true;
+            }
         }
     }
     void LookAround()
@@ -75,13 +100,25 @@ public class AiProcessing : MonoBehaviour
             }
             //agent.speed = patrolSpeed;
             inCombat = false;
-            aiMovement.inCombat = false;
-            aicombat.inCombat = false;
+            if (aiMovement != null)
+            {
+                aiMovement.inCombat = false;
+            }
+            if (aicombat != false)
+            {
+                aicombat.inCombat = false;
+            }
         }
         if (target != null)
         {
-            aiMovement.inCombat = true;
-            aicombat.inCombat = true;
+            if (aiMovement != null)
+            {
+                aiMovement.inCombat = true;
+            }
+            if (aicombat != null)
+            {
+                aicombat.inCombat = true;
+            }
             inCombat = true;
             GetNearestTarget();
         }
@@ -110,6 +147,13 @@ public class AiProcessing : MonoBehaviour
     protected void FleeBehavior()
     {
         isRetreating = true;
-        //agent.SetDestination(fleePoint.position);
+        if (aiMovement != null)
+        {
+            aiMovement.isRetreating = true;
+        }
+        if (aicombat != null)
+        {
+            aicombat.isRetreating = true;
+        }
     }
 }
