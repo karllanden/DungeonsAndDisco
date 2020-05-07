@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    // Hampus & Karl
+
     [SerializeField] GameObject[] allWeapons;
     [SerializeField] GameObject weapon;
     [SerializeField] GameObject handE;
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     AudioManager audioManager;
 
-    [SerializeField] public Image PistolIconQ, PistolIconE, ShotgunIconQ, ShotgunIconE, BurstIconQ, BurstIconE, AKIconQ, AKIconE;
+    [SerializeField] public Image PistolIconQ, PistolIconE, ShotgunIconQ, ShotgunIconE, BurstIconQ, BurstIconE, AKIconQ, AKIconE; // all the icons for the HUD
 
 
 
@@ -51,7 +53,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    // Hampus and Karl
+
     void Update()
     {
         timeSinceLastShotQ += Time.deltaTime;
@@ -335,7 +337,7 @@ public class PlayerController : MonoBehaviour
         }
         if (handQ.GetComponentInChildren<BurstFireScript>())
         {
-            if (handQ.GetComponentInChildren<BurstFireScript>().currentAmmo <= 3) //start timer when ammo is 0.
+            if (handQ.GetComponentInChildren<BurstFireScript>().currentAmmo <= 3) //start timer when ammo is 3 or below.
             {
                 reloadTimeCountQ += Time.deltaTime;
             }
