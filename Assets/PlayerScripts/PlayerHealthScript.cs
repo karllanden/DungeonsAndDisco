@@ -12,6 +12,9 @@ public class PlayerHealthScript : MonoBehaviour
     [SerializeField]
     public GameObject PlayerObject;
 
+    [SerializeField]
+    public GameObject endScreen;
+
 
     public HealthBar healthBar;
 
@@ -22,6 +25,7 @@ public class PlayerHealthScript : MonoBehaviour
         currentHealth = maxHealth;
 
         healthBar.SetMaxhealth(maxHealth);
+        endScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -52,6 +56,7 @@ public class PlayerHealthScript : MonoBehaviour
         Vector3 pos = PlayerObject.transform.position;
         DeathAnimation = GameObject.Instantiate(DeathAnimation, pos, Quaternion.identity);
         PlayerObject.SetActive(false);
+        endScreen.SetActive(true);
     }
 
     public void Heal()
