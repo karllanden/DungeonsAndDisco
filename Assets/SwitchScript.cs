@@ -42,7 +42,7 @@ public class SwitchScript : MonoBehaviour
                 armUp.SetActive(false);
                 armDown.SetActive(true);
                 UIElement.SetActive(false);
-                Unlockobject1.transform.position += new Vector3(0, -4, 0);
+                Unlockobject1.transform.position += new Vector3(0, -8, 0);
                 if (Unlockobject2 != null)
                 {
                     Unlockobject2.SetActive(false);

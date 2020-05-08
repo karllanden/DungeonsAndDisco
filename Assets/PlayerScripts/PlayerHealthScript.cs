@@ -33,10 +33,10 @@ public class PlayerHealthScript : MonoBehaviour
     {
 
         //healthBar.fillAmount = currentHealth / maxHealth;
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            takeDamage(2);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    takeDamage(2);
+        //}
     }
 
     public void takeDamage(float damageTaken)
@@ -59,8 +59,13 @@ public class PlayerHealthScript : MonoBehaviour
         endScreen.SetActive(true);
     }
 
-    public void Heal()
+    public void Heal(float healAmount)
     {
-
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
     }
 }
