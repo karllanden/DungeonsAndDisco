@@ -41,4 +41,13 @@ public class AiCombat : AiProcessing
             timeSinceLastShot = 0;
         }
     }
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform bulletSpawn;
+    public void Shoot()
+    {
+        GameObject createBullet = GameObject.Instantiate(bullet);
+        Bullet firedBullet = createBullet.GetComponent<Bullet>();
+        firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
+        FindObjectOfType<AudioManager>().Play("PistolShot");
+    }
 }
