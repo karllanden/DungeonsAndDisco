@@ -11,6 +11,8 @@ public class AiMovement : AiProcessing
     private Transform nearestPatrolPoint;
     private int nearestPartolNumber;
     private bool atDestination;
+    [SerializeField]
+    private float combatDistance;
 
     [SerializeField]
     private Transform baseRotation;
@@ -88,13 +90,15 @@ public class AiMovement : AiProcessing
             return;
         }
         distance = Vector3.Distance(target.position, transform.position);
-        if (distance <= 10)
+        if (distance <= combatDistance)
         {
+            //gameObject.GetComponent<NavMeshAgent>().enabled = false;
             destination = transform;
             agent.SetDestination(destination.position);
         }
-        if (distance >= 10)
+        if (distance >= combatDistance)
         {
+            //gameObject.GetComponent<NavMeshAgent>().disa = true;
             agent.SetDestination(target.position);
         }
         direction = target.position - transform.position;
@@ -121,5 +125,9 @@ public class AiMovement : AiProcessing
         {
             return;
         }
+    }
+    private void BossMovement()
+    {
+
     }
 }
