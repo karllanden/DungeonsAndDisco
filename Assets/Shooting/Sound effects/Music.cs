@@ -14,6 +14,8 @@ public class Music
     [Range(.1f, 3f)]
     public float pitch;
 
+    public float setStartTime;
+
     [HideInInspector]
     public AudioSource source;
 }

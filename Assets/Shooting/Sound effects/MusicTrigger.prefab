@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 69458449048378713}
   - component: {fileID: 69458449048378710}
-  - component: {fileID: 69458449048378711}
+  - component: {fileID: 7523607100529794813}
   m_Layer: 0
   m_Name: MusicTrigger
   m_TagString: Untagged
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicName: Theme
---- !u!65 &69458449048378711
+--- !u!65 &7523607100529794813
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,5 +56,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.134036, y: 3.3601909, z: 1.9595222}
-  m_Center: {x: 0.11553812, y: -0.3155558, z: 15.136835}
+  m_Size: {x: 1.6061792, y: 2.4628143, z: 1.5310059}
+  m_Center: {x: 0.12135649, y: 0.73140717, z: 0.26550293}
