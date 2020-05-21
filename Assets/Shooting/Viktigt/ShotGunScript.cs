@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShotGunScript : MonoBehaviour
 {
     //public GameObject bullet;
+    AudioSource audio;
     [SerializeField] GameObject bullet;
     public int maxAmmo, currentAmmo;
     [SerializeField] float fireCd = 0.6f, damage;
@@ -13,6 +14,11 @@ public class ShotGunScript : MonoBehaviour
     Vector3 direction;
     GameObject target;
     [SerializeField] Transform bulletSpawn;
+
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,6 +37,10 @@ public class ShotGunScript : MonoBehaviour
 
     public void Shoot()
     {
+        AudioSource newAudio = audio;
+        newAudio.pitch = audio.pitch;
+        newAudio.volume = audio.volume;
+        newAudio.PlayOneShot(audio.clip);
         //Skapa 5 kulor       
         GameObject[] createBullets = new GameObject[5];
         for (int i = 0; i < 5; i++)

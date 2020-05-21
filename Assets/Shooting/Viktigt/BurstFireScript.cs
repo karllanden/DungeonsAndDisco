@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BurstFireScript : MonoBehaviour
 {
+    public int shots;
+    AudioSource audio;
     [SerializeField]
     GameObject bullet;
     public int maxAmmo, currentAmmo;
@@ -20,7 +22,7 @@ public class BurstFireScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class BurstFireScript : MonoBehaviour
 
     private IEnumerator Burst()
     {
-        int shots = 0;
+        shots = 0;
         bool bursting = true;
         float timeBetweenShots = 0.05f;
         float timeSinceLastShot = 0;
@@ -60,6 +62,10 @@ public class BurstFireScript : MonoBehaviour
                 firedBullet.GetValues(bulletSpawn, shotSpeed, direction, damage);
                 shots++;
                 timeSinceLastShot = 0;
+                AudioSource newAudio = audio;
+                newAudio.pitch = audio.pitch;
+                newAudio.volume = audio.volume;
+                newAudio.PlayOneShot(audio.clip);
                 //GameObject[] createBullets = new GameObject[5];
                 //for (int i = 0; i < 5; i++)
                 //{

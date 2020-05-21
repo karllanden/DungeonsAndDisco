@@ -270,7 +270,6 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdQ = 0.2f;
                     handQ.GetComponentInChildren<GunShotScript>().Shoot();
-                    audioManager.Play("PistolShot");
                     UpdateWeaponStatsQ();
                     timeSinceLastShotQ = 0;
                 }
@@ -313,7 +312,6 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdE = 0.2f;
                     handE.GetComponentInChildren<GunShotScript>().Shoot();
-                    audioManager.Play("PistolShot");
                     UpdateWeaponStatsE();
                     timeSinceLastShotE = 0;
                 }

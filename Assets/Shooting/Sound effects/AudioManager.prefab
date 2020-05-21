@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6960788013807846324}
   - component: {fileID: 1254307712245825944}
   - component: {fileID: 6212959778677783184}
-  - component: {fileID: 2527111847446337}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -147,29 +146,3 @@ MonoBehaviour:
     volume: 0
     pitch: 0
     source: {fileID: 0}
---- !u!114 &2527111847446337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4456167950889179459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c38c13c684db849ae15df5dc52f443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playList:
-  - name: BattleMusic 1
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 1
-    setStartTime: 0
-    source: {fileID: 0}
-  - name: BattleMusic 2
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 1
-    setStartTime: 0
-    source: {fileID: 0}
-  audioSource: {fileID: 0}

@@ -44,7 +44,7 @@ public class MusicManager : MonoBehaviour
 
         if (currentMusic != newMusic)
         {
-
+            currentMusic = newMusic;
             audioSource.clip = newMusic.clip;
             volumeLimit = newMusic.volume;
             audioSource.volume = newMusic.volume / 2;
