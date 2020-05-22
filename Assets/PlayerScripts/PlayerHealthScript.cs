@@ -24,9 +24,15 @@ public class PlayerHealthScript : MonoBehaviour
     {
 
         //healthBar.fillAmount = currentHealth / maxHealth;
+<<<<<<< Updated upstream
         if (Input.GetKeyDown(KeyCode.Space))
         {
             takeDamage(2);
+=======
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            takeDamage(100);
+>>>>>>> Stashed changes
         }
     }
 

@@ -13,7 +13,10 @@ public class LookAtScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject target = GameObject.FindGameObjectWithTag("Target");
-        transform.LookAt(target.transform);
+        if (!PlayerController.gameIsPaused)
+        {
+            GameObject target = GameObject.FindGameObjectWithTag("Target");
+            transform.LookAt(target.transform);
+        }
     }
 }
