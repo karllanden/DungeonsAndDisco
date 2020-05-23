@@ -7,7 +7,6 @@ using UnityEngine.Audio;
 
 public class GunShotScript : MonoBehaviour
 {
-    public AudioSource audio;
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletSpawn;
     public int maxAmmo, currentAmmo;
@@ -18,12 +17,10 @@ public class GunShotScript : MonoBehaviour
     GameObject target, hand;
     [SerializeField] public float damage;
     public bool isPlayer;
-    public List<AudioSource> audioSources;
     //Hittar kulornas mål och beräknar riktning
 
     private void Start()
     {
-        audio = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -44,14 +41,11 @@ public class GunShotScript : MonoBehaviour
     public void Shoot()
     {
         GameObject createBullet = GameObject.Instantiate(bullet);
-        AudioSource newAudio = audio;
-        newAudio.pitch = audio.pitch;
-        newAudio.volume = audio.volume;
-        newAudio.PlayOneShot(audio.clip);
-        audioSources.Add(newAudio);
 
         Bullet firedBullet = createBullet.GetComponent<Bullet>();
         firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
+
+        FindObjectOfType<AudioManager>().Play("PistolShot");
 
         //FindObjectOfType<AudioManager>().Play("PistolShot");
     }

@@ -37,10 +37,7 @@ public class ShotGunScript : MonoBehaviour
 
     public void Shoot()
     {
-        AudioSource newAudio = audio;
-        newAudio.pitch = audio.pitch;
-        newAudio.volume = audio.volume;
-        newAudio.PlayOneShot(audio.clip);
+        FindObjectOfType<AudioManager>().Play("ShotGun");
         //Skapa 5 kulor       
         GameObject[] createBullets = new GameObject[5];
         for (int i = 0; i < 5; i++)

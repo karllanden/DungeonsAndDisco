@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+        s.source.PlayOneShot(s.source.clip);
     }
 
     public void Stop(string name)

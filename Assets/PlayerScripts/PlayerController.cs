@@ -39,9 +39,6 @@ public class PlayerController : MonoBehaviour
     Text currentAmmoE;
 
     [SerializeField]
-    AudioManager audioManager;
-
-    [SerializeField]
     public Image PistolIconQ, PistolIconE, ShotgunIconQ, ShotgunIconE, BurstIconQ, BurstIconE, AKIconQ, AKIconE; // all the icons for the HUD
 
 
@@ -283,7 +280,6 @@ public class PlayerController : MonoBehaviour
 
 
                     handQ.GetComponentInChildren<ShotGunScript>().Shoot();
-                    audioManager.Play("PistolShot");
                     UpdateWeaponStatsQ();
                     timeSinceLastShotQ = 0;
                 }
@@ -294,7 +290,6 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdQ = 0.3f;
                     handQ.GetComponentInChildren<BurstFireScript>().Shoot();
-                    audioManager.Play("PistolShot");
                     UpdateWeaponStatsQ();
                     timeSinceLastShotQ = 0;
                 }
@@ -323,7 +318,6 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdE = 0.5f;
                     handE.GetComponentInChildren<ShotGunScript>().Shoot();
-                    audioManager.Play("PistolShot");
                     UpdateWeaponStatsE();
                     timeSinceLastShotE = 0;
                 }
@@ -334,7 +328,6 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdE = 0.3f;
                     handE.GetComponentInChildren<BurstFireScript>().Shoot();
-                    audioManager.Play("PistolShot");
                     UpdateWeaponStatsE();
                     timeSinceLastShotE = 0;
                 }
