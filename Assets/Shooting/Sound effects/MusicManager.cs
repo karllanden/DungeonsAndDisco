@@ -7,10 +7,11 @@ using System;
 public class MusicManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    Music currentMusic;
+    Music currentMusic, transitionMusic;
     public Music[] playList;
     public AudioSource audioSource;
     int modulus;
+    public bool fadeIn = false;
     float volumeLimit;
     void Awake()
     {
@@ -27,12 +28,20 @@ public class MusicManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(audioSource.volume < volumeLimit)
+        if (fadeIn)
         {
-            audioSource.volume += 0.5f * Time.fixedDeltaTime;
+            if (audioSource.volume < volumeLimit)
+            {
+                audioSource.volume += 0.5f * Time.fixedDeltaTime;
+            }
         }
-
+        else if (!fadeIn)
+        {
+            audioSource.volume -= 0.5f * Time.fixedDeltaTime;
+        }
+        fadeInMusic();
         NextMusic();
+
     }
 
     public void Play(string name)
@@ -44,12 +53,23 @@ public class MusicManager : MonoBehaviour
 
         if (currentMusic != newMusic)
         {
-            currentMusic = newMusic;
-            audioSource.clip = newMusic.clip;
-            volumeLimit = newMusic.volume;
-            audioSource.volume = newMusic.volume / 2;
-            audioSource.pitch = newMusic.pitch;
-            audioSource.time = newMusic.setStartTime;
+            transitionMusic = newMusic;
+            fadeIn = false;
+            
+        }
+    }
+
+    private void fadeInMusic()
+    {
+        if (audioSource.volume <= 0)
+        {
+            fadeIn = true;
+            currentMusic = transitionMusic;
+            audioSource.clip = transitionMusic.clip;
+            volumeLimit = transitionMusic.volume;
+            audioSource.volume = transitionMusic.volume / 2;
+            audioSource.pitch = transitionMusic.pitch;
+            audioSource.time = transitionMusic.setStartTime;
             audioSource.Play();
         }
     }
@@ -69,6 +89,7 @@ public class MusicManager : MonoBehaviour
                         audioSource.volume = playList[modulus].volume / 2;
                         audioSource.pitch = playList[modulus].pitch;
                         currentMusic = playList[modulus];
+                        fadeIn = true;
                         audioSource.Play();
                         break;
 

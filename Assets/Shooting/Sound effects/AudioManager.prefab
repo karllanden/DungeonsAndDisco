@@ -141,6 +141,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: PistolShot
+    clip: {fileID: 8300000, guid: a9d3dab3663f46043818b3f7aec6d472, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: ShotGun
+    clip: {fileID: 8300000, guid: eaedd6dacdd49b340b10dfb70d671432, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
   - name: 
     clip: {fileID: 0}
     volume: 0
