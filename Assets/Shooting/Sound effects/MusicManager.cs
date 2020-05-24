@@ -39,7 +39,7 @@ public class MusicManager : MonoBehaviour
         {
             audioSource.volume -= 0.5f * Time.fixedDeltaTime;
         }
-        fadeInMusic();
+        TransitionMusic();
         NextMusic();
 
     }
@@ -59,7 +59,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private void fadeInMusic()
+    private void TransitionMusic()
     {
         if (audioSource.volume <= 0)
         {
