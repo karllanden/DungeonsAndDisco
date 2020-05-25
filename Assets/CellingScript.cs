@@ -9,8 +9,21 @@ public class CellingScript : MonoBehaviour
     [SerializeField] 
     private float fadePerSecond = 2.5f;
 
+    [SerializeField]
+    private GameObject ActiveObjecs1;
+    [SerializeField]
+    private GameObject ActiveObjecs2;
+
     void OnTriggerEnter(Collider other)
     {
+        if (ActiveObjecs1 != null)
+        {
+            ActiveObjecs1.SetActive(true);
+        }
+        if (ActiveObjecs2 != null)
+        {
+            ActiveObjecs2.SetActive(true);
+        }
         if (other.tag == "Player")
         {
             if (playerHasEntered == false)
@@ -18,6 +31,7 @@ public class CellingScript : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+
 
     }
 

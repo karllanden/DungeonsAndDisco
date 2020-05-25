@@ -33,10 +33,10 @@ public class AiProcessing : MonoBehaviour
 
 
     [SerializeField]
-    public float currentHealth;
+    private float currentHealth;
 
     [SerializeField]
-    public GameObject DeathAnimation;
+    private GameObject DeathAnimation;
 
 
 
