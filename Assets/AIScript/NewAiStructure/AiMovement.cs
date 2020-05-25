@@ -6,16 +6,17 @@ using UnityEngine.AI;
 
 public class AiMovement : AiProcessing
 {
-    [SerializeField]
-    private Transform[] patrolPathsArray;
+    [SerializeField] private Transform[] patrolPathsArray;
+    public Transform lastKnownLocation;
     private Transform nearestPatrolPoint;
     private int nearestPartolNumber;
     private bool atDestination;
-    [SerializeField]
-    private float combatDistance;
+    [SerializeField] private float combatDistance;
+    private bool isHunting;
 
-    [SerializeField]
-    private Transform baseRotation;
+
+    [SerializeField] private Transform baseRotation;
+
     NavMeshAgent agent;
 
     [SerializeField]
@@ -30,40 +31,54 @@ public class AiMovement : AiProcessing
         //atDestination = false;
         agent = this.GetComponent<NavMeshAgent>();
         InvokeRepeating("CheckPostition", 0f, 0.5f);
+        InvokeRepeating("TargetPostition", 0f, 0.1f);
         atDestination = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (inCombat == true)
+        if (isHunting == true)
         {
-            if (isRetreating || isCivilian)
+            HuntBehavior();
+        }
+        else
+        {
+            if (inCombat == true)
+            {
+                if (isRetreating || isCivilian)
+                {
+                    FleeBehavior();
+                    FleeMovement();
+                }
+                else
+                {
+                    CombatMovementBehavior();
+                }
+            }
+
+            if (isRetreating && isCivilian)
             {
                 FleeBehavior();
                 FleeMovement();
             }
+
+            //if (isCivilian == true)
+            //{
+            //    //Dance
+            //}
             else
             {
-                CombatMovementBehavior();
+                PatrolMovementBehavior();
             }
         }
-
-        if (isRetreating && isCivilian)
+    }
+    void TargetPostition()
+    {
+        if (target != null)
         {
-            FleeBehavior();
-            FleeMovement();
+            lastKnownLocation = target;
         }
-
-        //if (isCivilian == true)
-        //{
-        //    //Dance
-        //}
-        else
-        {
-            PatrolMovementBehavior();
-        }
-
     }
     void CheckPostition()
     {
@@ -75,6 +90,10 @@ public class AiMovement : AiProcessing
         if (distance <= 2)
         {
             atDestination = true;
+            if (isHunting == true)
+            {
+                isHunting = false;
+            }
         }
     }
     void FleeMovement()
@@ -86,6 +105,7 @@ public class AiMovement : AiProcessing
     {
         if (target == null)
         {
+            isHunting = true;
             inCombat = false;
             return;
         }
@@ -95,12 +115,18 @@ public class AiMovement : AiProcessing
             //gameObject.GetComponent<NavMeshAgent>().enabled = false;
             destination = transform;
             agent.SetDestination(destination.position);
+            lookAtTarget();
         }
         if (distance >= combatDistance)
         {
             //gameObject.GetComponent<NavMeshAgent>().disa = true;
             agent.SetDestination(target.position);
+            lookAtTarget();
         }
+        
+    }
+    void lookAtTarget()
+    {
         direction = target.position - transform.position;
         Quaternion FindTargetRotation = Quaternion.LookRotation(direction);
         rotation = Quaternion.Lerp(baseRotation.rotation, FindTargetRotation, Time.deltaTime * RotationSpeed).eulerAngles;
@@ -124,6 +150,18 @@ public class AiMovement : AiProcessing
         else
         {
             return;
+        }
+    }
+    void HuntBehavior()
+    {
+        if (target == null)
+        {
+            agent.SetDestination(lastKnownLocation.position);
+            destination = lastKnownLocation;
+        }
+        if (target != null)
+        {
+            isHunting = false;
         }
     }
     private void BossMovement()

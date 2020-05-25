@@ -6,6 +6,7 @@ public class Minigun : MonoBehaviour
 {
     public bool winding = false, shooting = false;
     [SerializeField] float windUpCounter = 0;
+    [SerializeField] float velocity;
     float timeSinceLastShot = 0, fireCd = 0.04f, damage;
     [SerializeField] GameObject bullet, bulletSpawn;
     public FieldOfView fieldOfView;
@@ -19,7 +20,7 @@ public class Minigun : MonoBehaviour
         if (shooting && timeSinceLastShot > fireCd)
         {
             GameObject tempObject = GameObject.Instantiate(bullet);
-            tempObject.GetComponent<Bullet>().GetValues(bulletSpawn.transform, 50, transform.forward, damage);
+            tempObject.GetComponent<Bullet>().GetValues(bulletSpawn.transform, velocity, transform.forward, damage);
             Bullet tempBullet = tempObject.GetComponent<Bullet>();
             tempBullet.transform.Rotate(new Vector3(0, Random.Range(-10.0f, 10.0f), 0));
             tempBullet.ChangeDirection(tempObject.transform.forward);
@@ -28,6 +29,10 @@ public class Minigun : MonoBehaviour
         if (fieldOfView.visableTargets.Count >= 1)
         {
             Shoot();
+        }
+        else
+        {
+            Stop();
         }
     }
 
@@ -61,6 +66,10 @@ public class Minigun : MonoBehaviour
             }
             yield return null;
         } while (!winding && windUpCounter > 0);
+        if (windUpCounter <= 0)
+        {
+            windUpCounter = 0;
+        }
     }
 
     public void Shoot()
