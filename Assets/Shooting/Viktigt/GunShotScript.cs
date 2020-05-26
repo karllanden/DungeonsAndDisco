@@ -40,12 +40,15 @@ public class GunShotScript : MonoBehaviour
     //Om en kula kan avfyras skapas den och ges värden
     public void Shoot()
     {
-        GameObject createBullet = GameObject.Instantiate(bullet);
+        if (currentAmmo >= 1)
+        {
+            currentAmmo--;
+            GameObject createBullet = GameObject.Instantiate(bullet);
 
-        Bullet firedBullet = createBullet.GetComponent<Bullet>();
-        firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
-
-        FindObjectOfType<AudioManager>().Play("PistolShot");
+            Bullet firedBullet = createBullet.GetComponent<Bullet>();
+            firedBullet.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
+            FindObjectOfType<AudioManager>().Play("PistolShot");
+        }
 
         //FindObjectOfType<AudioManager>().Play("PistolShot");
     }

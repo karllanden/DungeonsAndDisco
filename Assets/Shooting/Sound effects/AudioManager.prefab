@@ -151,8 +151,13 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
-    pitch: 0
+  - name: EmptyClip
+    clip: {fileID: 8300000, guid: 31dbdf442cc16fe4b852349b9b52e74c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Reload
+    clip: {fileID: 8300000, guid: e6693be7f8560ba46b2c63c8268b839b, type: 3}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}

@@ -34,6 +34,7 @@ public class BurstFireScript : MonoBehaviour
         //firedBullet.GetValues(bulletSpawn, shotSpeed, direction, damage);
         if (!shooting)
         {
+
             StartCoroutine(Burst());
             shooting = true;
         }
@@ -52,28 +53,13 @@ public class BurstFireScript : MonoBehaviour
             timeSinceLastShot += Time.deltaTime;
             if (timeSinceLastShot > timeBetweenShots)
             {
+                currentAmmo --;
                 GameObject createBullet = GameObject.Instantiate(bullet);
                 Bullet firedBullet = createBullet.GetComponent<Bullet>();
                 firedBullet.GetValues(bulletSpawn, shotSpeed, direction, damage);
                 shots++;
                 timeSinceLastShot = 0;
                 FindObjectOfType<AudioManager>().Play("PistolShot");
-                //GameObject[] createBullets = new GameObject[5];
-                //for (int i = 0; i < 5; i++)
-                //{
-                //    createBullets[i] = GameObject.Instantiate(bullet, this.direction, this.transform.rotation);
-                //    Bullet tempObject = createBullets[i].GetComponent<Bullet>();
-                //    tempObject.GetValues(bulletSpawn.transform, shotSpeed, direction, damage);
-                //}
-                ////Ge alla kulor en unik rikting inom en viss spridning från där man siktar
-                //float angle = 15;
-                //foreach (GameObject g in createBullets)
-                //{
-                //    Bullet tempObject = g.GetComponent<Bullet>();
-                //    tempObject.transform.Rotate(new Vector3(0, angle, 0));
-                //    tempObject.ChangeDirection(tempObject.transform.forward);
-                //    angle -= 7.5f;
-                //}
                 if (shots == 3)
                 {
                     bursting = false;

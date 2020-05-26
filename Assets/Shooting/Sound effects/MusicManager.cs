@@ -39,8 +39,8 @@ public class MusicManager : MonoBehaviour
         {
             audioSource.volume -= 0.5f * Time.fixedDeltaTime;
         }
-        fadeInMusic();
-        NextMusic();
+        ChangeMusic();
+        QuedMusic();
 
     }
 
@@ -59,7 +59,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private void fadeInMusic()
+    private void ChangeMusic()
     {
         if (audioSource.volume <= 0)
         {
@@ -74,7 +74,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private void NextMusic()
+    private void QuedMusic()
     {
         if (audioSource != null)
         {

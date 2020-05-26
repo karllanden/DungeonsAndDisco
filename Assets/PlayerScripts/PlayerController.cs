@@ -232,29 +232,6 @@ public class PlayerController : MonoBehaviour
             AKIconE.enabled = false;
         }
     }
-    private void UpdateWeaponStatsQ()
-    {
-        if (handQ.GetComponentInChildren<GunShotScript>())
-            handQ.GetComponentInChildren<GunShotScript>().currentAmmo--;
-
-        if (handQ.GetComponentInChildren<ShotGunScript>())
-            handQ.GetComponentInChildren<ShotGunScript>().currentAmmo--;
-
-        if (handQ.GetComponentInChildren<BurstFireScript>())
-            handQ.GetComponentInChildren<BurstFireScript>().currentAmmo -= 3;
-
-    }
-    private void UpdateWeaponStatsE()
-    {
-        if (handE.GetComponentInChildren<GunShotScript>())
-            handE.GetComponentInChildren<GunShotScript>().currentAmmo--;
-
-        if (handE.GetComponentInChildren<ShotGunScript>())
-            handE.GetComponentInChildren<ShotGunScript>().currentAmmo--;
-
-        if (handE.GetComponentInChildren<BurstFireScript>())
-            handE.GetComponentInChildren<BurstFireScript>().currentAmmo -= 3;
-    }
 
     private void ShootQ()
     {
@@ -267,8 +244,13 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdQ = 0.2f;
                     handQ.GetComponentInChildren<GunShotScript>().Shoot();
-                    UpdateWeaponStatsQ();
                     timeSinceLastShotQ = 0;
+                }
+                else
+                {
+                    fireCdE = 0.2f;
+                    FindObjectOfType<AudioManager>().Play("EmptyClip");
+                    timeSinceLastShotE = 0;
                 }
 
             }
@@ -277,10 +259,14 @@ public class PlayerController : MonoBehaviour
                 if (handQ.GetComponentInChildren<ShotGunScript>().currentAmmo >= 1)
                 {
                     fireCdQ = 0.5f;
-
-
                     handQ.GetComponentInChildren<ShotGunScript>().Shoot();
-                    UpdateWeaponStatsQ();
+                    timeSinceLastShotQ = 0;
+                }
+
+                else
+                {
+                    fireCdE = 0.5f;
+                    FindObjectOfType<AudioManager>().Play("EmptyClip");
                     timeSinceLastShotQ = 0;
                 }
             }
@@ -290,7 +276,12 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdQ = 0.3f;
                     handQ.GetComponentInChildren<BurstFireScript>().Shoot();
-                    UpdateWeaponStatsQ();
+                    timeSinceLastShotQ = 0;
+                }
+                else
+                {
+                    fireCdE = 0.3f;
+                    FindObjectOfType<AudioManager>().Play("EmptyClip");
                     timeSinceLastShotQ = 0;
                 }
             }
@@ -307,8 +298,14 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdE = 0.2f;
                     handE.GetComponentInChildren<GunShotScript>().Shoot();
-                    UpdateWeaponStatsE();
                     timeSinceLastShotE = 0;
+                }
+                else
+                {
+                    fireCdE = 0.2f;
+                    FindObjectOfType<AudioManager>().Play("EmptyClip");
+                    timeSinceLastShotE = 0;
+
                 }
 
             }
@@ -318,7 +315,12 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdE = 0.5f;
                     handE.GetComponentInChildren<ShotGunScript>().Shoot();
-                    UpdateWeaponStatsE();
+                    timeSinceLastShotE = 0;
+                }
+                else
+                {
+                    fireCdE = 0.5f;
+                    FindObjectOfType<AudioManager>().Play("EmptyClip");
                     timeSinceLastShotE = 0;
                 }
             }
@@ -328,7 +330,12 @@ public class PlayerController : MonoBehaviour
                 {
                     fireCdE = 0.3f;
                     handE.GetComponentInChildren<BurstFireScript>().Shoot();
-                    UpdateWeaponStatsE();
+                    timeSinceLastShotE = 0;
+                }
+                else
+                {
+                    fireCdE = 0.3f;
+                    FindObjectOfType<AudioManager>().Play("EmptyClip");
                     timeSinceLastShotE = 0;
                 }
             }
