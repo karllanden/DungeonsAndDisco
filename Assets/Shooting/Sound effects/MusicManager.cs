@@ -39,11 +39,14 @@ public class MusicManager : MonoBehaviour
         {
             audioSource.volume -= 0.5f * Time.fixedDeltaTime;
         }
+        
         ChangeMusic();
-        QuedMusic();
+
+        NextMusic();
 
     }
 
+    //Finds the wanted music and puts it on a variable until a method changes the music
     public void Play(string name)
     {
         Music newMusic = Array.Find(playList, music => music.name == name);
@@ -74,7 +77,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    private void QuedMusic()
+    private void NextMusic()
     {
         if (audioSource != null)
         {
