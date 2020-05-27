@@ -5166,7 +5166,7 @@ MonoBehaviour:
   fieldOfViewHearing: {fileID: 1004909306711256669}
   target: {fileID: 0}
   weaponGameObject: {fileID: 3948654930223712929}
-  currentHealth: 200
+  currentHealth: 15
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
   weapon: {fileID: 3948654930223712959}
@@ -5190,7 +5190,7 @@ MonoBehaviour:
   fieldOfViewHearing: {fileID: 1004909306711256669}
   target: {fileID: 0}
   weaponGameObject: {fileID: 3948654930223712929}
-  currentHealth: 200
+  currentHealth: 15
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
 --- !u!114 &3044847654642542093
@@ -5212,7 +5212,7 @@ MonoBehaviour:
   fieldOfViewHearing: {fileID: 0}
   target: {fileID: 0}
   weaponGameObject: {fileID: 0}
-  currentHealth: 200
+  currentHealth: 15
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
   patrolPathsArray: []

@@ -16,16 +16,16 @@ public class CellingScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (ActiveObjecs1 != null)
-        {
-            ActiveObjecs1.SetActive(true);
-        }
-        if (ActiveObjecs2 != null)
-        {
-            ActiveObjecs2.SetActive(true);
-        }
         if (other.tag == "Player")
         {
+            if (ActiveObjecs1 != null)
+            {
+                ActiveObjecs1.SetActive(true);
+            }
+            if (ActiveObjecs2 != null)
+            {
+                ActiveObjecs2.SetActive(true);
+            }
             if (playerHasEntered == false)
             {
                 gameObject.SetActive(false);
