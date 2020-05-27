@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
     public Music[] playList;
     public AudioSource audioSource;
     int modulus;
-    public bool fadeIn = false;
+    public bool fadeIn;
     float volumeLimit;
     void Awake()
     {
