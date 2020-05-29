@@ -41,12 +41,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public Image PistolIconQ, PistolIconE, ShotgunIconQ, ShotgunIconE, BurstIconQ, BurstIconE, AKIconQ, AKIconE; // all the icons for the HUD
 
+    public static bool gameIsPaused =false;
+    [SerializeField]
+    GameObject PauseMenu;
 
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
+    // Start is called before th    {
+    void Start() { 
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         PistolIconQ.enabled = false;
         PistolIconE.enabled = false;
@@ -62,49 +62,65 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-
-        timeSinceLastShotQ += Time.deltaTime;
-        timeSinceLastShotE += Time.deltaTime;
-        if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
-            IdentifyWeaponOnPickup();
-
-
-        target = GameObject.FindGameObjectWithTag("Target");
-
-        direction = target.transform.position - this.transform.position;
-
-        float distancePlayerTarget = Vector3.Distance(this.transform.position, target.transform.position);
-
-        if (distancePlayerTarget < 3)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (!gameIsPaused)
+            {
+                PauseMenu.SetActive(true);
+                gameIsPaused = true;
+                Time.timeScale = 0;
+                
+            }
+            else
+            {
+                PauseMenu.SetActive(false);
+                gameIsPaused = false;
+                Time.timeScale = 1;
+                
+            }
         }
-        else
+        if (!gameIsPaused)
         {
-            handE.transform.LookAt(target.transform);
-            handQ.transform.LookAt(target.transform);
+            timeSinceLastShotQ += Time.deltaTime;
+            timeSinceLastShotE += Time.deltaTime;
+            if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.E))
+                IdentifyWeaponOnPickup();
+
+
+            target = GameObject.FindGameObjectWithTag("Target");
+
+            direction = target.transform.position - this.transform.position;
+
+            float distancePlayerTarget = Vector3.Distance(this.transform.position, target.transform.position);
+
+            if (distancePlayerTarget < 3)
+            {
+            }
+            else
+            {
+                handE.transform.LookAt(target.transform);
+                handQ.transform.LookAt(target.transform);
+            }
+
+            if (weapon != null) //chech if player has weapon equipped.
+            {
+                UpdateHUD();
+                UpdateHUDimage();
+                ReloadQ(); //try reload Q
+                ReloadE(); //try reload E
+
+            }
+
+            //Försöker avfyra en kula
+            if (Input.GetMouseButton(0) == true && timeSinceLastShotQ > fireCdQ)
+            {
+                ShootQ();
+            }
+            if (Input.GetMouseButton(1) == true && timeSinceLastShotE > fireCdE)
+            {
+                ShootE();
+            }
         }
-
-        if (weapon != null) //chech if player has weapon equipped.
-        {
-            UpdateHUD();
-            UpdateHUDimage();
-            ReloadQ(); //try reload Q
-            ReloadE(); //try reload E
-
-        }
-
-        //Försöker avfyra en kula
-        if (Input.GetMouseButton(0) == true && timeSinceLastShotQ > fireCdQ)
-        {
-            ShootQ();
-        }
-        if (Input.GetMouseButton(1) == true && timeSinceLastShotE > fireCdE)
-        {
-            ShootE();
-        }
-
-
     }
 
     private void UpdateHUD()
