@@ -177,4 +177,23 @@ MonoBehaviour:
     pitch: 1
     setStartTime: 0
     source: {fileID: 0}
+  - name: Kavinsky
+    clip: {fileID: 8300000, guid: 1c6911bed3f3d574f8db460f27237b18, type: 3}
+    volume: 0.1
+    pitch: 1
+    setStartTime: 0
+    source: {fileID: 0}
+  - name: Styx
+    clip: {fileID: 8300000, guid: 9f529fbf4911f08408a200b035a72e95, type: 3}
+    volume: 0.1
+    pitch: 1
+    setStartTime: 40
+    source: {fileID: 0}
+  - name: Miami
+    clip: {fileID: 8300000, guid: 407e54c8bd7be644292d144947665ebc, type: 3}
+    volume: 0.1
+    pitch: 1
+    setStartTime: 0
+    source: {fileID: 0}
   audioSource: {fileID: 0}
+  fadeIn: 0
