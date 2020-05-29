@@ -42,7 +42,7 @@ public class GunShotScript : MonoBehaviour
     {
         if (currentAmmo >= 1)
         {
-            currentAmmo--;
+            
             GameObject createBullet = GameObject.Instantiate(bullet);
 
             Bullet firedBullet = createBullet.GetComponent<Bullet>();

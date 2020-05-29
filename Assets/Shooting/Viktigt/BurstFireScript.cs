@@ -52,7 +52,7 @@ public class BurstFireScript : MonoBehaviour
             timeSinceLastShot += Time.deltaTime;
             if (timeSinceLastShot > timeBetweenShots)
             {
-                currentAmmo--;
+                
                 GameObject createBullet = GameObject.Instantiate(bullet);
                 Bullet firedBullet = createBullet.GetComponent<Bullet>();
                 firedBullet.GetValues(bulletSpawn, shotSpeed, direction, damage);

@@ -1,0 +1,4 @@
+1. Kontrollera att du har senaste versionen av master
+2. Kontrollera att ingen annan jobbar i master
+3. Testa dina ändringar och allt de kan ha påverkat
+4. Pusha

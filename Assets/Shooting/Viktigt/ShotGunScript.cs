@@ -38,7 +38,7 @@ public class ShotGunScript : MonoBehaviour
     public void Shoot()
     {
         FindObjectOfType<AudioManager>().Play("ShotGun");
-        currentAmmo--;
+        
         //Skapa 5 kulor       
         GameObject[] createBullets = new GameObject[5];
         for (int i = 0; i < 5; i++)
