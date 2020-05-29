@@ -25,54 +25,57 @@ public class Bullet : MonoBehaviour
     //bestämmer när en kollision händer och sedan hur kulan ska agera
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.tag == "Player")
-        {
-            //GameObject player = GameObject.FindGameObjectWithTag("Player");
-            //player.GetComponent<PlayerHealthScript>().takeDamage(damage);
-            GameObject Player = other.gameObject;
-            Player.GetComponentInParent<PlayerHealthScript>().takeDamage(damage);
-            Destroy(gameObject);
-
-        }
-        if (other.tag == "Enemy")
-        {
-            //GameObject player = GameObject.FindGameObjectWithTag("Player");
-            //player.GetComponent<PlayerHealthScript>().takeDamage(damage);
-            //GameObject Enemy = other.gameObject;
-            if (other.GetComponent<AiProcessing>())
-            {
-                other.GetComponent<AiProcessing>().takeDamage(damage);
-            }
-            Destroy(gameObject);
-            
-            
-
-        }
-        if (!other.gameObject.GetComponent<Bullet>())
+        if (other.tag != "BulletIgnore")
         {
 
-
-            if (other.tag != "Player")
+            if (other.tag == "Player")
             {
-                Destroy(this.gameObject);
-                GameObject createExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(createExplosion, 1.7f);
+                //GameObject player = GameObject.FindGameObjectWithTag("Player");
+                //player.GetComponent<PlayerHealthScript>().takeDamage(damage);
+                GameObject Player = other.gameObject;
+                Player.GetComponentInParent<PlayerHealthScript>().takeDamage(damage);
+                Destroy(gameObject);
 
             }
-            if (other.tag != "Gun")
+            if (other.tag == "Enemy")
             {
-                Destroy(this.gameObject);
+                //GameObject player = GameObject.FindGameObjectWithTag("Player");
+                //player.GetComponent<PlayerHealthScript>().takeDamage(damage);
+                //GameObject Enemy = other.gameObject;
+                if (other.GetComponent<AiProcessing>())
+                {
+                    other.GetComponent<AiProcessing>().takeDamage(damage);
+                }
+                Destroy(gameObject);
+
+
+
             }
+            if (!other.gameObject.GetComponent<Bullet>())
+            {
+
+
+                if (other.tag != "Player")
+                {
+                    Destroy(this.gameObject);
+                    GameObject createExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
+                    Destroy(createExplosion, 1.7f);
+
+                }
+                if (other.tag != "Gun")
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+            //else if (other.gameObject.GetComponent<Bullet>())
+            //{
+
+            //    Destroy(this.gameObject);
+            //    GameObject createExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
+            //    Destroy(createExplosion, 1.7f);
+
+            //}
         }
-        //else if (other.gameObject.GetComponent<Bullet>())
-        //{
-
-        //    Destroy(this.gameObject);
-        //    GameObject createExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
-        //    Destroy(createExplosion, 1.7f);
-
-        //}
     }
     //tar emot värden som bestämmer kulans "behavior" från vapnet
     public void GetValues(Transform tf, float v, Vector3 dir, float damage)
