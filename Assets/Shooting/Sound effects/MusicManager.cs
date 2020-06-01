@@ -28,6 +28,7 @@ public class MusicManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         if (fadeIn)
         {
             if (audioSource.volume < volumeLimit)
@@ -39,10 +40,8 @@ public class MusicManager : MonoBehaviour
         {
             audioSource.volume -= 0.5f * Time.fixedDeltaTime;
         }
-        
-        ChangeMusic();
-
         NextMusic();
+        ChangeMusic();
 
     }
 
@@ -58,13 +57,13 @@ public class MusicManager : MonoBehaviour
         {
             transitionMusic = newMusic;
             fadeIn = false;
-            
+
         }
     }
 
     private void ChangeMusic()
     {
-        if (audioSource.volume <= 0)
+        if (audioSource.volume <= 0 && transitionMusic != null)
         {
             fadeIn = true;
             currentMusic = transitionMusic;
