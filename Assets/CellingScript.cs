@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CellingScript : MonoBehaviour
 {
-
+    //Jeff Code
     bool playerHasEntered;
     [SerializeField] 
     private float fadePerSecond = 2.5f;

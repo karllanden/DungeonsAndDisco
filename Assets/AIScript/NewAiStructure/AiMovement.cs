@@ -6,36 +6,34 @@ using UnityEngine.AI;
 
 public class AiMovement : AiProcessing
 {
+    //Jeff Code
+    [Header("Set Patrol points, Can be 0")]
     [SerializeField] private Transform[] patrolPathsArray;
-    public Transform lastKnownLocation;
+   
+    [Header("Set Combat distance, Can be 0")]
+    [SerializeField] private float combatDistance;
+    
+    [Header("Set body to be the center of rotation")]
+    [SerializeField] private Transform baseRotation;
+
+    [Header("Set Flee point")]
+    [SerializeField] private Transform fleePoint;
+
+    private Transform lastKnownLocation;
     private Transform nearestPatrolPoint;
     private int nearestPartolNumber;
-    private bool atDestination;
-    [SerializeField] private float combatDistance;
-    private bool isHunting;
-
-
-    [SerializeField] private Transform baseRotation;
+    private bool isHunting, atDestination;
 
     NavMeshAgent agent;
 
-    [SerializeField]
-    private Transform fleePoint;
-    // Start is called before the first frame update
     void Start()
     {
-        //nearestPartolNumber = Random.Range(0, patrolPathsArray.Length);
-        //nearestPatrolPoint = patrolPathsArray[nearestPartolNumber];
-        //agent.SetDestination(nearestPatrolPoint.position);
-        //destination.position = nearestPatrolPoint.transform.position;
-        //atDestination = false;
         agent = this.GetComponent<NavMeshAgent>();
         InvokeRepeating("CheckPostition", 0f, 0.5f);
         InvokeRepeating("TargetPostition", 0f, 0.1f);
         atDestination = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isHunting == true)
@@ -112,14 +110,12 @@ public class AiMovement : AiProcessing
         distance = Vector3.Distance(target.position, transform.position);
         if (distance <= combatDistance)
         {
-            //gameObject.GetComponent<NavMeshAgent>().enabled = false;
             destination = transform;
             agent.SetDestination(destination.position);
             lookAtTarget();
         }
         if (distance >= combatDistance)
         {
-            //gameObject.GetComponent<NavMeshAgent>().disa = true;
             agent.SetDestination(target.position);
             lookAtTarget();
         }
