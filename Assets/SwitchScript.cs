@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SwitchScript : MonoBehaviour
 {
+    //Jeff Code
+
     [SerializeField]
     private GameObject UIElement;
     [SerializeField]

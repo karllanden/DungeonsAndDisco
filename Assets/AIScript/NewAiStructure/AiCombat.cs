@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AiCombat : AiProcessing
 {
-    [SerializeField]
-    GunShotScript weapon;
+    //Jeff Code
+    [Header("Set Weapon Damage and add weapon script")]
+    [SerializeField] GunShotScript weapon;
     [SerializeField] float damage;
 
 
@@ -16,7 +17,6 @@ public class AiCombat : AiProcessing
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (inCombat == true)
@@ -36,7 +36,7 @@ public class AiCombat : AiProcessing
             return;
         }
         timeSinceLastShot += Time.deltaTime;
-        if (/*fieldOfViewSight.directLineOfSight == true && */timeSinceLastShot > fireCd)
+        if (timeSinceLastShot > fireCd)
         {
             weapon.Shoot();
             timeSinceLastShot = 0;

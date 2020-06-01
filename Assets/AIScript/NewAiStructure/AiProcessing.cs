@@ -1,50 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class AiProcessing : MonoBehaviour
 {
+    //Jeff Code
     protected bool inCombat, isRetreating, targetSpotted, isArmed;
-    [SerializeField]
-    protected bool isCivilian;
-    //protected static NavMeshAgent agent;
-    protected float patrolSpeed;
 
-    [SerializeField]
+    [Header("Mark as Civilian to disable combat")]
+    [SerializeField] protected bool isCivilian;
+
+    [Header("Scripts Only Add on AiProcessing")]
     private AiCombat aicombat;
-    [SerializeField]
     private AiMovement aiMovement;
+    [SerializeField] protected FieldOfView fieldOfViewSight;
+    [SerializeField] protected FieldOfView fieldOfViewHearing;
 
-    [SerializeField]
-    protected FieldOfView fieldOfViewSight;
-    [SerializeField]
-    protected FieldOfView fieldOfViewHearing;
-    public Transform target;
+    [Header("Add Weapon to enable combat")]
+    [SerializeField] private GameObject weaponGameObject;
 
-    protected float distance;
-    protected Transform destination;
-    [SerializeField]
-    private GameObject weaponGameObject;
+    [Header("Set Current Health, Only on Processor")]
+    [SerializeField] private float currentHealth;
+
+    [Header("Set Death Animation, Only on Processor")]
+    [SerializeField] private GameObject DeathAnimation;
+   
+    [Header("Set score value, Only on Processor")]
+    [SerializeField] private int scoreAmount ;
 
     protected Vector3 direction;
     protected Vector3 rotation;
     protected float RotationSpeed = 10f;
+    protected float patrolSpeed;
+
+    protected Transform target;
+
+    protected float distance;
+    protected Transform destination;
 
 
-    [SerializeField]
-    private float currentHealth;
-
-    [SerializeField]
-    private GameObject DeathAnimation;
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        //agent = this.GetComponent<NavMeshAgent>();
-        //patrolSpeed = agent.speed / 2;
+        aicombat = GetComponentInChildren<AiCombat>();
+        aiMovement = GetComponentInChildren<AiMovement>();
+
         InvokeRepeating("GetNearestTarget", 0f, 0.1f);
         InvokeRepeating("LookAround", 0f, 0.5f);
         CheckIfIsArmed();
@@ -65,11 +66,13 @@ public class AiProcessing : MonoBehaviour
         {
             aiMovement.inCombat = false;
         }
-
-        currentHealth = 5f;
+        if (aicombat != null)
+        {
+            aicombat.currentHealth = currentHealth;
+        }
+        aiMovement.currentHealth = currentHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -78,7 +81,8 @@ public class AiProcessing : MonoBehaviour
     public void takeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
-
+        //aicombat.currentHealth -= damageTaken;
+        //aiMovement.currentHealth -= damageTaken;
 
 
         if (currentHealth <= 0)
@@ -94,6 +98,7 @@ public class AiProcessing : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    //Checks if Ai Is armed 
     void CheckIfIsArmed()
     {
         if (weaponGameObject == null)
@@ -127,7 +132,7 @@ public class AiProcessing : MonoBehaviour
                 aiMovement.target = null;
                 target = null;
             }
-            //agent.speed = patrolSpeed;
+
             inCombat = false;
             if (aiMovement != null)
             {
@@ -152,11 +157,7 @@ public class AiProcessing : MonoBehaviour
             GetNearestTarget();
         }
     }
-    //private void OnDrawGizmosSelected()
-    //{
-    //    Gizmos.color = Color.red;
-    //    Gizmos.DrawWireSphere(transform.position, fieldOfViewSight.viewRadius);
-    //}
+
     void GetNearestTarget()
     {
         aiMovement.target = null;
