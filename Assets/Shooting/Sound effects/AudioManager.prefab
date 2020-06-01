@@ -143,16 +143,16 @@ MonoBehaviour:
   sounds:
   - name: PistolShot
     clip: {fileID: 8300000, guid: a9d3dab3663f46043818b3f7aec6d472, type: 3}
-    volume: 1
+    volume: 0.027
     pitch: 1
     source: {fileID: 0}
   - name: ShotGun
     clip: {fileID: 8300000, guid: eaedd6dacdd49b340b10dfb70d671432, type: 3}
-    volume: 1
+    volume: 0.25
     pitch: 1
     source: {fileID: 0}
   - name: EmptyClip
     clip: {fileID: 8300000, guid: a671bcba2857b36408aacaba55a86120, type: 3}
-    volume: 1
+    volume: 0.75
     pitch: 1
     source: {fileID: 0}
