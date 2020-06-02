@@ -82,7 +82,6 @@ public class BurstFireScript : MonoBehaviour
                     shooting = false;
                 }
             }
-            Debug.Log(shots.ToString());
             yield return null;
         } while (bursting);
 

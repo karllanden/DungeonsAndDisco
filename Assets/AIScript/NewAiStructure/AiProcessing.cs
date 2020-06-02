@@ -47,10 +47,7 @@ public class AiProcessing : MonoBehaviour
     {
         aicombat = GetComponentInChildren<AiCombat>();
         aiMovement = GetComponentInChildren<AiMovement>();
-        if (healthBar != null)
-        {
-            healthBar.SetMaxhealth(currentHealth);
-        }
+     
 
         InvokeRepeating("GetNearestTarget", 0f, 0.1f);
         InvokeRepeating("LookAround", 0f, 0.5f);
@@ -77,6 +74,10 @@ public class AiProcessing : MonoBehaviour
             aicombat.currentHealth = currentHealth;
         }
         aiMovement.currentHealth = currentHealth;
+        if (healthBar != null)
+        {
+            healthBar.SetMaxhealth(currentHealth);
+        }
     }
 
     void Update()

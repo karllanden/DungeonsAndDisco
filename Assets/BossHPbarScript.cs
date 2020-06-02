@@ -36,7 +36,8 @@ public class BossHPbarScript : MonoBehaviour
     public void SetHealth(float health)
     {
         slider.value = health;
-        healthBarImage.color = Color.Lerp(lowColor, fullColor, (slider.value / 100));
+        Debug.Log(slider.value);
+        healthBarImage.color = Color.Lerp(lowColor, fullColor, (slider.value / 500));
 
     }
     //public void Update()
