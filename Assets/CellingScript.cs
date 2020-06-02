@@ -13,6 +13,8 @@ public class CellingScript : MonoBehaviour
     private GameObject ActiveObjecs1;
     [SerializeField]
     private GameObject ActiveObjecs2;
+    [SerializeField]
+    private GameObject ActiveObjecs3;
 
     void OnTriggerEnter(Collider other)
     {
@@ -25,6 +27,10 @@ public class CellingScript : MonoBehaviour
             if (ActiveObjecs2 != null)
             {
                 ActiveObjecs2.SetActive(true);
+            }
+            if (ActiveObjecs3 != null)
+            {
+                ActiveObjecs3.SetActive(true);
             }
             if (playerHasEntered == false)
             {

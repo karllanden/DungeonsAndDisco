@@ -28,16 +28,21 @@ public class BossHPbarScript : MonoBehaviour
 
     public void SetMaxhealth(float health)
     {
+        maxHealth = health;
         slider.maxValue = health;
         slider.value = health;
         healthBarImage = healthBar.GetComponent<Image>();
+        
     }
 
     public void SetHealth(float health)
     {
         slider.value = health;
         Debug.Log(slider.value);
-        healthBarImage.color = Color.Lerp(lowColor, fullColor, (slider.value / 500));
+        healthBarImage.color = Color.Lerp(lowColor, fullColor, (slider.value / maxHealth));
+        Color tempColor = healthBarImage.color;
+        tempColor.a = 1f;
+        healthBarImage.color = tempColor;
 
     }
     //public void Update()
