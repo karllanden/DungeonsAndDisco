@@ -22,13 +22,15 @@ public class AiProcessing : MonoBehaviour
     [SerializeField] private GameObject weaponGameObject;
 
     [Header("Set Current Health, Only on Processor")]
-    [SerializeField] private float currentHealth;
+    [SerializeField] public float currentHealth;
 
     [Header("Set Death Animation, Only on Processor")]
     [SerializeField] private GameObject DeathAnimation;
    
     [Header("Set score value, Only on Processor")]
     [SerializeField] private int scoreAmount ;
+    [Header("Set HPBar from HUD")]
+    [SerializeField] public BossHPbarScript healthBar;
 
     protected Vector3 direction;
     protected Vector3 rotation;
@@ -45,6 +47,10 @@ public class AiProcessing : MonoBehaviour
     {
         aicombat = GetComponentInChildren<AiCombat>();
         aiMovement = GetComponentInChildren<AiMovement>();
+        if (healthBar != null)
+        {
+            healthBar.SetMaxhealth(currentHealth);
+        }
 
         InvokeRepeating("GetNearestTarget", 0f, 0.1f);
         InvokeRepeating("LookAround", 0f, 0.5f);
@@ -81,6 +87,11 @@ public class AiProcessing : MonoBehaviour
     public void takeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
+
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(currentHealth);
+        }
         //aicombat.currentHealth -= damageTaken;
         //aiMovement.currentHealth -= damageTaken;
 
