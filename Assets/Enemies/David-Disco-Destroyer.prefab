@@ -8984,7 +8984,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2451801527699448617
 Transform:
   m_ObjectHideFlags: 0
@@ -15286,6 +15286,7 @@ MonoBehaviour:
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
   scoreAmount: 0
+  healthBar: {fileID: 0}
   weapon: {fileID: 8083817013744948244}
   damage: 0
 --- !u!114 &7827947529482598567
@@ -15308,6 +15309,7 @@ MonoBehaviour:
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
   scoreAmount: 0
+  healthBar: {fileID: 0}
 --- !u!114 &7827947529482598566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15328,6 +15330,7 @@ MonoBehaviour:
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
   scoreAmount: 0
+  healthBar: {fileID: 0}
   patrolPathsArray: []
   combatDistance: 20
   baseRotation: {fileID: 7827947529482598561}
@@ -15356,7 +15359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8083817013567642995}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.17, y: 0.433, z: 5.856}
+  m_LocalPosition: {x: 5.2, y: 0.433, z: 6.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8083817013744948235}
@@ -15387,7 +15390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8083817013744948234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.541, y: 0, z: 0.426}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 8083817013567643004}

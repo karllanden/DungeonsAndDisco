@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0869932170a76499ec14343be702d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 5
+  viewRadius: 15
   viewAngle: 360
   layerWalls:
     serializedVersion: 2
@@ -5160,15 +5160,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCivilian: 0
-  aicombat: {fileID: 0}
-  aiMovement: {fileID: 0}
   fieldOfViewSight: {fileID: 3044847654976436188}
   fieldOfViewHearing: {fileID: 1004909306711256669}
-  target: {fileID: 0}
   weaponGameObject: {fileID: 3948654930223712929}
   currentHealth: 15
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
+  scoreAmount: 0
+  healthBar: {fileID: 0}
   weapon: {fileID: 3948654930223712959}
   damage: 0
 --- !u!114 &3044847654642542092
@@ -5184,15 +5183,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCivilian: 0
-  aicombat: {fileID: 3044847654642542095}
-  aiMovement: {fileID: 3044847654642542093}
   fieldOfViewSight: {fileID: 3044847654976436188}
   fieldOfViewHearing: {fileID: 1004909306711256669}
-  target: {fileID: 0}
   weaponGameObject: {fileID: 3948654930223712929}
   currentHealth: 15
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
+  scoreAmount: 0
+  healthBar: {fileID: 0}
 --- !u!114 &3044847654642542093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5206,17 +5204,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCivilian: 0
-  aicombat: {fileID: 0}
-  aiMovement: {fileID: 0}
   fieldOfViewSight: {fileID: 0}
   fieldOfViewHearing: {fileID: 0}
-  target: {fileID: 0}
   weaponGameObject: {fileID: 0}
   currentHealth: 15
   DeathAnimation: {fileID: 1921733007084234089, guid: 36405fb976330864d8c64027b09b7734,
     type: 3}
+  scoreAmount: 0
+  healthBar: {fileID: 0}
   patrolPathsArray: []
-  lastKnownLocation: {fileID: 0}
   combatDistance: 10
   baseRotation: {fileID: 3044847654642542090}
   fleePoint: {fileID: 0}
