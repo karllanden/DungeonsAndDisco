@@ -41,12 +41,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public Image PistolIconQ, PistolIconE, ShotgunIconQ, ShotgunIconE, BurstIconQ, BurstIconE, AKIconQ, AKIconE; // all the icons for the HUD
 
-    public static bool gameIsPaused =false;
+    public static bool gameIsPaused = false;
     [SerializeField]
     GameObject PauseMenu;
 
     // Start is called before th    {
-    void Start() { 
+    void Start()
+    {
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         PistolIconQ.enabled = false;
         PistolIconE.enabled = false;
@@ -69,14 +70,14 @@ public class PlayerController : MonoBehaviour
                 PauseMenu.SetActive(true);
                 gameIsPaused = true;
                 Time.timeScale = 0;
-                
+
             }
             else
             {
                 PauseMenu.SetActive(false);
                 gameIsPaused = false;
                 Time.timeScale = 1;
-                
+
             }
         }
         if (!gameIsPaused)
@@ -191,10 +192,22 @@ public class PlayerController : MonoBehaviour
     {
         if (handQ.GetComponentInChildren<GunShotScript>())
         {
-            PistolIconQ.enabled = true;
-            ShotgunIconQ.enabled = false;
-            BurstIconQ.enabled = false;
-            AKIconQ.enabled = false;
+            if (handQ.GetComponentInChildren<GunShotScript>().fireCd < 0.1f)
+            {
+                AKIconQ.enabled = true;
+                PistolIconQ.enabled = false;
+                ShotgunIconQ.enabled = false;
+                BurstIconQ.enabled = false;
+            }
+            else
+            {
+                PistolIconQ.enabled = true;
+                AKIconQ.enabled = false;
+                ShotgunIconQ.enabled = false;
+                BurstIconQ.enabled = false;
+            }
+
+
         }
         if (handQ.GetComponentInChildren<ShotGunScript>())
         {
@@ -213,10 +226,20 @@ public class PlayerController : MonoBehaviour
 
         if (handE.GetComponentInChildren<GunShotScript>())
         {
-            PistolIconE.enabled = true;
-            ShotgunIconE.enabled = false;
-            BurstIconE.enabled = false;
-            AKIconE.enabled = false;
+            if (handE.GetComponentInChildren<GunShotScript>().fireCd < 0.1f)
+            {
+                AKIconE.enabled = true;
+                PistolIconE.enabled = false;
+                ShotgunIconE.enabled = false;
+                BurstIconE.enabled = false;
+            }
+            else
+            {
+                AKIconE.enabled = false;
+                PistolIconE.enabled = true;
+                ShotgunIconE.enabled = false;
+                BurstIconE.enabled = false;
+            }
         }
         if (handE.GetComponentInChildren<ShotGunScript>())
         {
@@ -281,7 +304,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (handQ.GetComponentInChildren<GunShotScript>().currentAmmo >= 1)
                 {
-                    fireCdQ = 0.2f;
+                    fireCdQ = handQ.GetComponentInChildren<GunShotScript>().fireCd;
                     handQ.GetComponentInChildren<GunShotScript>().Shoot();
                     UpdateWeaponStatsQ();
                     timeSinceLastShotQ = 0;
@@ -298,7 +321,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (handQ.GetComponentInChildren<ShotGunScript>().currentAmmo >= 1)
                 {
-                    fireCdQ = 0.5f;
+                    fireCdQ = handQ.GetComponentInChildren<ShotGunScript>().fireCd;
                     handQ.GetComponentInChildren<ShotGunScript>().Shoot();
                     UpdateWeaponStatsQ();
                     timeSinceLastShotQ = 0;
@@ -312,7 +335,7 @@ public class PlayerController : MonoBehaviour
             }
             if (handQ.GetComponentInChildren<BurstFireScript>())
             {
-                if (handQ.GetComponentInChildren<BurstFireScript>().currentAmmo >= 3)
+                if (handQ.GetComponentInChildren<BurstFireScript>().currentAmmo > 3)
                 {
                     fireCdQ = 0.3f;
                     handQ.GetComponentInChildren<BurstFireScript>().Shoot();
@@ -337,7 +360,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (handE.GetComponentInChildren<GunShotScript>().currentAmmo >= 1)
                 {
-                    fireCdE = 0.2f;
+                    fireCdE = handE.GetComponentInChildren<GunShotScript>().fireCd;
                     handE.GetComponentInChildren<GunShotScript>().Shoot();
                     UpdateWeaponStatsE();
                     timeSinceLastShotE = 0;
@@ -354,7 +377,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (handE.GetComponentInChildren<ShotGunScript>().currentAmmo >= 1)
                 {
-                    fireCdE = 0.5f;
+                    fireCdE = handE.GetComponentInChildren<ShotGunScript>().fireCd;
                     handE.GetComponentInChildren<ShotGunScript>().Shoot();
                     UpdateWeaponStatsE();
                     timeSinceLastShotE = 0;
@@ -368,7 +391,7 @@ public class PlayerController : MonoBehaviour
             }
             if (handE.GetComponentInChildren<BurstFireScript>())
             {
-                if (handE.GetComponentInChildren<BurstFireScript>().currentAmmo >= 3)
+                if (handE.GetComponentInChildren<BurstFireScript>().currentAmmo > 3)
                 {
                     fireCdE = 0.3f;
                     handE.GetComponentInChildren<BurstFireScript>().Shoot();
@@ -492,6 +515,7 @@ public class PlayerController : MonoBehaviour
         if (tempWeaponSelected != null)
         {
             weapon = tempWeaponSelected;
+
         }
 
 

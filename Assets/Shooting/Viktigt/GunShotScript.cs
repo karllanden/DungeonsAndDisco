@@ -10,7 +10,7 @@ public class GunShotScript : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletSpawn;
     public int maxAmmo, currentAmmo;
-    float fireCd = 0.2f, timeSinceLastShot = 0;
+    public float fireCd, timeSinceLastShot = 0;
     [SerializeField]
     float shotSpeed = 50;
     Vector3 direction;
@@ -28,7 +28,7 @@ public class GunShotScript : MonoBehaviour
         direction = transform.forward;
         target = GameObject.FindGameObjectWithTag("Target");
         // direction = target.transform.position - this.transform.position;
-        timeSinceLastShot += Time.deltaTime;
+        // timeSinceLastShot += Time.deltaTime;
         ////Försöker avfyra en kula
         //if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
         //{
@@ -42,7 +42,7 @@ public class GunShotScript : MonoBehaviour
     {
         if (currentAmmo >= 1)
         {
-            
+
             GameObject createBullet = GameObject.Instantiate(bullet);
 
             Bullet firedBullet = createBullet.GetComponent<Bullet>();

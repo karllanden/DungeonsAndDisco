@@ -8,7 +8,7 @@ public class ShotGunScript : MonoBehaviour
     AudioSource audio;
     [SerializeField] GameObject bullet;
     public int maxAmmo, currentAmmo;
-    [SerializeField] float fireCd = 0.6f, damage;
+    public float fireCd = 0.6f, damage;
     float timeSinceLastShot = 0;
     float shotSpeed = 30;
     Vector3 direction;
@@ -38,7 +38,7 @@ public class ShotGunScript : MonoBehaviour
     public void Shoot()
     {
         FindObjectOfType<AudioManager>().Play("ShotGun");
-        
+
         //Skapa 5 kulor       
         GameObject[] createBullets = new GameObject[5];
         for (int i = 0; i < 5; i++)
