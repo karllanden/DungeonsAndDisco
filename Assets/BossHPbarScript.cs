@@ -12,6 +12,8 @@ public class BossHPbarScript : MonoBehaviour
     private Color fullColor;
     [SerializeField]
     private Color lowColor;
+    [SerializeField]
+    GameObject WinScreen;
 
     Image healthBarImage;
 
@@ -43,7 +45,10 @@ public class BossHPbarScript : MonoBehaviour
         Color tempColor = healthBarImage.color;
         tempColor.a = 1f;
         healthBarImage.color = tempColor;
-
+        if (health <= 0)
+        {
+            WinScreen.SetActive(true);
+        }
     }
     //public void Update()
     //{
