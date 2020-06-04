@@ -312,7 +312,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     fireCdQ = 0.2f;
-                    FindObjectOfType<AudioManager>().Play("EmptyClip");
+                    FindObjectOfType<AudioManager>().PlayOneShot("EmptyClip");
                     timeSinceLastShotQ = 0;
                 }
 
@@ -329,7 +329,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     fireCdQ = 0.5f;
-                    FindObjectOfType<AudioManager>().Play("EmptyClip");
+                    FindObjectOfType<AudioManager>().PlayOneShot("EmptyClip");
                     timeSinceLastShotQ = 0;
                 }
             }
@@ -345,7 +345,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     fireCdQ = 0.3f;
-                    FindObjectOfType<AudioManager>().Play("EmptyClip");
+                    FindObjectOfType<AudioManager>().PlayOneShot("EmptyClip");
                     timeSinceLastShotQ = 0;
                 }
             }
@@ -368,7 +368,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     fireCdE = 0.2f;
-                    FindObjectOfType<AudioManager>().Play("EmptyClip");
+                    FindObjectOfType<AudioManager>().PlayOneShot("EmptyClip");
                     timeSinceLastShotE = 0;
                 }
 
@@ -385,7 +385,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     fireCdE = 0.5f;
-                    FindObjectOfType<AudioManager>().Play("EmptyClip");
+                    FindObjectOfType<AudioManager>().PlayOneShot("EmptyClip");
                     timeSinceLastShotE = 0;
                 }
             }
@@ -401,7 +401,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     fireCdE = 0.3f;
-                    FindObjectOfType<AudioManager>().Play("EmptyClip");
+                    FindObjectOfType<AudioManager>().PlayOneShot("EmptyClip");
                     timeSinceLastShotE = 0;
                 }
             }

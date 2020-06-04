@@ -23,6 +23,7 @@ public class Minigun : MonoBehaviour
             tempObject.GetComponent<Bullet>().GetValues(bulletSpawn.transform, velocity, transform.forward, damage);
             Bullet tempBullet = tempObject.GetComponent<Bullet>();
             tempBullet.transform.Rotate(new Vector3(0, Random.Range(-10.0f, 10.0f), 0));
+            FindObjectOfType<AudioManager>().PlayOneShot("MiniGun");
             tempBullet.ChangeDirection(tempObject.transform.forward);
             timeSinceLastShot = 0;
         }
@@ -38,6 +39,7 @@ public class Minigun : MonoBehaviour
 
     private IEnumerator windUp()
     {
+        //FindObjectOfType<AudioManager>().Play("WindUp");
         do
         {
             if (windUpCounter < 1)
@@ -57,6 +59,7 @@ public class Minigun : MonoBehaviour
 
     private IEnumerator windDown()
     {
+        //FindObjectOfType<AudioManager>().Play("WindDown");
         do
         {
             windUpCounter -= 0.016666f;

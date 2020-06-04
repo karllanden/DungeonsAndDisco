@@ -58,7 +58,7 @@ public class BurstFireScript : MonoBehaviour
                     firedBullet.GetValues(bulletSpawn, shotSpeed, direction, damage);
                     shots++;
                     timeSinceLastShot = 0;
-                    FindObjectOfType<AudioManager>().Play("PistolShot");
+                    FindObjectOfType<AudioManager>().PlayOneShot("PistolShot");
                 }
                 else if(isOverpowered)
                 {
@@ -82,7 +82,7 @@ public class BurstFireScript : MonoBehaviour
                         angle -= 7.5f;
                     }
                     
-                    FindObjectOfType<AudioManager>().Play("PistolShot");
+                    FindObjectOfType<AudioManager>().PlayOneShot("PistolShot");
                 }
 
 
