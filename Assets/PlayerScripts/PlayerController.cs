@@ -335,14 +335,14 @@ public class PlayerController : MonoBehaviour
             }
             if (handQ.GetComponentInChildren<BurstFireScript>())
             {
-                if (handQ.GetComponentInChildren<BurstFireScript>().currentAmmo > 3)
+                if (handQ.GetComponentInChildren<BurstFireScript>().currentAmmo >= 3)
                 {
                     fireCdQ = 0.3f;
                     handQ.GetComponentInChildren<BurstFireScript>().Shoot();
                     UpdateWeaponStatsQ();
                     timeSinceLastShotQ = 0;
                 }
-                else
+                else if(handQ.GetComponentInChildren<BurstFireScript>().currentAmmo < 3)
                 {
                     fireCdQ = 0.3f;
                     FindObjectOfType<AudioManager>().PlayOneShot("EmptyClip");
@@ -391,14 +391,14 @@ public class PlayerController : MonoBehaviour
             }
             if (handE.GetComponentInChildren<BurstFireScript>())
             {
-                if (handE.GetComponentInChildren<BurstFireScript>().currentAmmo > 3)
+                if (handE.GetComponentInChildren<BurstFireScript>().currentAmmo >= 3)
                 {
                     fireCdE = 0.3f;
                     handE.GetComponentInChildren<BurstFireScript>().Shoot();
                     UpdateWeaponStatsE();
                     timeSinceLastShotE = 0;
                 }
-                else
+                else if(handE.GetComponentInChildren<BurstFireScript>().currentAmmo < 3)
                 {
                     fireCdE = 0.3f;
                     FindObjectOfType<AudioManager>().PlayOneShot("EmptyClip");
