@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    //Zach, Karl, Hampus
     // Start is called before the first frame update
     public GameObject player;
 

@@ -32,13 +32,9 @@ public class PlayerHealthScript : MonoBehaviour
     void Update()
     {
 
-        //healthBar.fillAmount = currentHealth / maxHealth;
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    takeDamage(2);
-        //}
     }
 
+    //Receives damage
     public void takeDamage(float damageTaken)
     {
         currentHealth -= damageTaken;
@@ -50,7 +46,7 @@ public class PlayerHealthScript : MonoBehaviour
             Die();
         }
     }
-
+    //Plays deathanimation and shows death screen
     void Die()
     {
         Vector3 pos = PlayerObject.transform.position;
@@ -58,7 +54,7 @@ public class PlayerHealthScript : MonoBehaviour
         PlayerObject.SetActive(false);
         endScreen.SetActive(true);
     }
-
+    //Called to increase players health
     public void Heal(float healAmount)
     {
         currentHealth += healAmount;

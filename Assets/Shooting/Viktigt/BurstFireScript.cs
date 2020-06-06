@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BurstFireScript : MonoBehaviour
 {
+    //Karl
     public int shots;
     [SerializeField]
     GameObject bullet;
@@ -27,6 +28,7 @@ public class BurstFireScript : MonoBehaviour
         direction = transform.forward;
 
     }
+    //Starts burstfire
     public void Shoot()
     {
 
@@ -38,6 +40,7 @@ public class BurstFireScript : MonoBehaviour
 
     }
 
+    //Fires three bullets in quick succession
     private IEnumerator Burst()
     {
         shots = 0;

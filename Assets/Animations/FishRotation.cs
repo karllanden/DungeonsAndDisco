@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FishRotation : MonoBehaviour
 {
+    //Hampus
     [SerializeField]
     public Transform target;
 
@@ -15,7 +16,8 @@ public class FishRotation : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // Update is called once per frame'
+    //Makes fish rotate 
     void Update()
     {
         transform.RotateAround(target.position, Vector3.up, speed * Time.deltaTime);

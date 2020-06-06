@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoomMusic : MonoBehaviour
 {
+    //Zach
     public string musicName;
     BoxCollider boxCollider;
     // Start is called before the first frame update
@@ -29,9 +30,5 @@ public class RoomMusic : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        //if (other.gameObject.CompareTag("Player"))
-        //{
-        //    FindObjectOfType<AudioManager>().Stop("ThemeSong");
-        //}
     }
 }

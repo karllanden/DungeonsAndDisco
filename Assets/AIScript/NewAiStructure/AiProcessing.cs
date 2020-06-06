@@ -92,8 +92,7 @@ public class AiProcessing : MonoBehaviour
         {
             healthBar.SetHealth(currentHealth);
         }
-        //aicombat.currentHealth -= damageTaken;
-        //aiMovement.currentHealth -= damageTaken;
+
 
 
         if (currentHealth <= 0)
@@ -129,6 +128,7 @@ public class AiProcessing : MonoBehaviour
             }
         }
     }
+    //Checks environment for targets
     void LookAround()
     {
         if (target == null)
@@ -168,7 +168,7 @@ public class AiProcessing : MonoBehaviour
             GetNearestTarget();
         }
     }
-
+    //Selects the nearest target
     void GetNearestTarget()
     {
         aiMovement.target = null;
@@ -185,6 +185,7 @@ public class AiProcessing : MonoBehaviour
 
         }
     }
+    //AI Runs away
     protected void FleeBehavior()
     {
         isRetreating = true;

@@ -30,8 +30,7 @@ public class Bullet : MonoBehaviour
 
             if (other.tag == "Player")
             {
-                //GameObject player = GameObject.FindGameObjectWithTag("Player");
-                //player.GetComponent<PlayerHealthScript>().takeDamage(damage);
+             
                 GameObject Player = other.gameObject;
                 Player.GetComponentInParent<PlayerHealthScript>().takeDamage(damage);
                 Destroy(gameObject);
@@ -39,9 +38,7 @@ public class Bullet : MonoBehaviour
             }
             if (other.tag == "Enemy")
             {
-                //GameObject player = GameObject.FindGameObjectWithTag("Player");
-                //player.GetComponent<PlayerHealthScript>().takeDamage(damage);
-                //GameObject Enemy = other.gameObject;
+               
                 if (other.GetComponent<AiProcessing>())
                 {
                     other.GetComponent<AiProcessing>().takeDamage(damage);
@@ -67,14 +64,6 @@ public class Bullet : MonoBehaviour
                     Destroy(this.gameObject);
                 }
             }
-            //else if (other.gameObject.GetComponent<Bullet>())
-            //{
-
-            //    Destroy(this.gameObject);
-            //    GameObject createExplosion = GameObject.Instantiate(explosion, transform.position, Quaternion.identity);
-            //    Destroy(createExplosion, 1.7f);
-
-            //}
         }
     }
     //tar emot värden som bestämmer kulans "behavior" från vapnet

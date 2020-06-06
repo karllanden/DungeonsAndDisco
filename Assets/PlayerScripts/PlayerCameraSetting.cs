@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCameraSetting : MonoBehaviour
 {
+    //Obsolete
     public Camera cam;
     public Vector3 offset;
     public CameraMove cm;
@@ -27,7 +28,7 @@ public class PlayerCameraSetting : MonoBehaviour
         }
         else if (collisionInfo.collider.tag == "Untagged")
         {
-            ;
+            
         }
         else
         {

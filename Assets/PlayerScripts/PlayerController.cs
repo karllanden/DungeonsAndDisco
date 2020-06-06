@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject PauseMenu;
 
-    // Start is called before th    {
+    // Start is called before the first frame
     void Start()
     {
         allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //Hanterar inputs relaterat till pausmenyn
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!gameIsPaused)
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        //Hanterar input när spelet kör
         if (!gameIsPaused)
         {
             timeSinceLastShotQ += Time.deltaTime;
@@ -102,13 +104,14 @@ public class PlayerController : MonoBehaviour
                 handE.transform.LookAt(target.transform);
                 handQ.transform.LookAt(target.transform);
             }
-
-            if (weapon != null) //chech if player has weapon equipped.
+            
+            //Avgör om spelaren håller i vapen
+            if (weapon != null) 
             {
                 UpdateHUD();
                 UpdateHUDimage();
-                ReloadQ(); //try reload Q
-                ReloadE(); //try reload E
+                ReloadQ(); 
+                ReloadE(); 
 
             }
 
@@ -124,41 +127,43 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Uppdaterar användargränssnittet för olika vapen beroende på vad spelaren håller i 
     private void UpdateHUD()
     {
         if (handE.transform.childCount > 0)
         {
-            if (handE.GetComponentInChildren<GunShotScript>()) //access gunshotscript of weapon in hand E.
+            if (handE.GetComponentInChildren<GunShotScript>()) 
             {
-                currentAmmoE.text = handE.GetComponentInChildren<GunShotScript>().currentAmmo.ToString(); //update ammoHUD for weapon in hand E.
+                currentAmmoE.text = handE.GetComponentInChildren<GunShotScript>().currentAmmo.ToString(); 
             }
-            if (handE.GetComponentInChildren<ShotGunScript>()) //access gunshotscript of weapon in hand E.
+            if (handE.GetComponentInChildren<ShotGunScript>()) 
             {
-                currentAmmoE.text = handE.GetComponentInChildren<ShotGunScript>().currentAmmo.ToString(); //update ammoHUD for weapon in hand E.
+                currentAmmoE.text = handE.GetComponentInChildren<ShotGunScript>().currentAmmo.ToString(); 
             }
-            if (handE.GetComponentInChildren<BurstFireScript>()) //access gunshotscript of weapon in hand E.
+            if (handE.GetComponentInChildren<BurstFireScript>()) 
             {
-                currentAmmoE.text = handE.GetComponentInChildren<BurstFireScript>().currentAmmo.ToString(); //update ammoHUD for weapon in hand E.
+                currentAmmoE.text = handE.GetComponentInChildren<BurstFireScript>().currentAmmo.ToString(); 
             }
         }
 
 
         if (handQ.transform.childCount > 0)
         {
-            if (handQ.GetComponentInChildren<GunShotScript>()) //access gunshotscript of weapon in hand Q.
+            if (handQ.GetComponentInChildren<GunShotScript>()) 
             {
-                currentAmmoQ.text = handQ.GetComponentInChildren<GunShotScript>().currentAmmo.ToString(); //update ammoHUD for weapon in hand Q.
+                currentAmmoQ.text = handQ.GetComponentInChildren<GunShotScript>().currentAmmo.ToString(); 
             }
-            if (handQ.GetComponentInChildren<ShotGunScript>()) //access gunshotscript of weapon in hand Q.
+            if (handQ.GetComponentInChildren<ShotGunScript>()) 
             {
-                currentAmmoQ.text = handQ.GetComponentInChildren<ShotGunScript>().currentAmmo.ToString(); //update ammoHUD for weapon in hand Q.
+                currentAmmoQ.text = handQ.GetComponentInChildren<ShotGunScript>().currentAmmo.ToString(); 
             }
-            if (handQ.GetComponentInChildren<BurstFireScript>()) //access gunshotscript of weapon in hand Q.
+            if (handQ.GetComponentInChildren<BurstFireScript>()) 
             {
-                currentAmmoQ.text = handQ.GetComponentInChildren<BurstFireScript>().currentAmmo.ToString(); //update ammoHUD for weapon in hand Q.
+                currentAmmoQ.text = handQ.GetComponentInChildren<BurstFireScript>().currentAmmo.ToString(); 
             }
         }
 
+        //Återställer ammunition när en hand är tom
         if (handE.transform.childCount == 0)
         {
             currentAmmoE.text = "0";
@@ -168,26 +173,28 @@ public class PlayerController : MonoBehaviour
             currentAmmoQ.text = "0";
         }
 
-
-        if (handQ.GetComponentInChildren<ParticleSystem>()) // does weapon have static particle effect?
+        //Stänger av partikeleffekter och text kopplat till vapnet när spelaren tar upp vapnet
+        if (handQ.GetComponentInChildren<ParticleSystem>()) 
         {
-            handQ.GetComponentInChildren<ParticleSystem>().Pause(); //pause at pickup
-            handQ.GetComponentInChildren<ParticleSystem>().Clear(); //clear at pickup
-            if (handQ.GetComponentInChildren<Text>()) //does weapon have text-UI-object-thingy?
+            handQ.GetComponentInChildren<ParticleSystem>().Pause(); 
+            handQ.GetComponentInChildren<ParticleSystem>().Clear(); 
+            if (handQ.GetComponentInChildren<Text>()) 
             {
-                handQ.GetComponentInChildren<Text>().enabled = false; //remove info-text from weapon at pickup.
+                handQ.GetComponentInChildren<Text>().enabled = false; 
             }
         }
-        if (handE.GetComponentInChildren<ParticleSystem>()) // does weapon have static particle effect?
+        if (handE.GetComponentInChildren<ParticleSystem>()) 
         {
-            handE.GetComponentInChildren<ParticleSystem>().Pause(); //pause at pickup
-            handE.GetComponentInChildren<ParticleSystem>().Clear(); //clear at pickup
-            if (handE.GetComponentInChildren<Text>()) //does weapon have text-UI-object-thingy?
+            handE.GetComponentInChildren<ParticleSystem>().Pause(); 
+            handE.GetComponentInChildren<ParticleSystem>().Clear(); 
+            if (handE.GetComponentInChildren<Text>()) 
             {
-                handE.GetComponentInChildren<Text>().enabled = false; //remove info-text from weapon at pickup.
+                handE.GetComponentInChildren<Text>().enabled = false; 
             }
         }
     }
+
+    //Uppdaterar användargränssnittet för vilket vapen som spelaren håller i handen
     private void UpdateHUDimage()
     {
         if (handQ.GetComponentInChildren<GunShotScript>())
@@ -271,6 +278,8 @@ public class PlayerController : MonoBehaviour
             AKIconE.enabled = false;
         }
     }
+
+    //Räknar ner ammuntion när vapen avfyras
     private void UpdateWeaponStatsQ()
     {
         if (handQ.GetComponentInChildren<GunShotScript>())
@@ -295,6 +304,7 @@ public class PlayerController : MonoBehaviour
             handE.GetComponentInChildren<BurstFireScript>().currentAmmo -= 3;
     }
 
+    //Försöker avfyra vapen i vänster hand
     private void ShootQ()
     {
         if (handQ.GetComponentInChildren<GunShotScript>() || handQ.GetComponentInChildren<ShotGunScript>() || handQ.GetComponentInChildren<BurstFireScript>())
@@ -351,6 +361,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    //Försöker avfyra vapen i höger hand
     private void ShootE()
     {
         if (handE.GetComponentInChildren<GunShotScript>() || handE.GetComponentInChildren<ShotGunScript>() || handE.GetComponentInChildren<BurstFireScript>())
@@ -408,7 +419,7 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
+    //Laddar om vapen i vänster hand
     private void ReloadQ()
     {
         if (handQ.GetComponentInChildren<GunShotScript>())
@@ -448,6 +459,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+   // Laddar om vapen i höger hand
     private void ReloadE()
     {
         if (handE.GetComponentInChildren<GunShotScript>())
@@ -511,7 +523,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        //weapon = GameObject.Find("Pistol").GetComponent<GunShotScript>();
+        
         if (tempWeaponSelected != null)
         {
             weapon = tempWeaponSelected;

@@ -37,9 +37,10 @@ public class Minigun : MonoBehaviour
         }
     }
 
+    //Weapon winds up before firing
     private IEnumerator windUp()
     {
-        //FindObjectOfType<AudioManager>().Play("WindUp");
+      
         do
         {
             if (windUpCounter < 1)
@@ -56,10 +57,10 @@ public class Minigun : MonoBehaviour
             yield return null;
         } while (winding);
     }
-
+    //Weapon winds down after firing
     private IEnumerator windDown()
     {
-        //FindObjectOfType<AudioManager>().Play("WindDown");
+        
         do
         {
             windUpCounter -= 0.016666f;
@@ -75,6 +76,7 @@ public class Minigun : MonoBehaviour
         }
     }
 
+    //Starts wind up
     public void Shoot()
     {
         if (!winding)
@@ -83,6 +85,7 @@ public class Minigun : MonoBehaviour
             StartCoroutine(windUp());
         }
     }
+    //Starts wind down
     public void Stop()
     {
         if (winding)

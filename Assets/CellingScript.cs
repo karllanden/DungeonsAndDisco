@@ -53,7 +53,7 @@ public class CellingScript : MonoBehaviour
     {
         
     }
-
+    //Deactivates fog of war for a room once the player has entered
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")

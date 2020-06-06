@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShotGunScript : MonoBehaviour
 {
-    //public GameObject bullet;
+    //Karl
     AudioSource audio;
     [SerializeField] GameObject bullet;
     public int maxAmmo, currentAmmo;
@@ -25,14 +25,6 @@ public class ShotGunScript : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Target");
 
-        //direction = target.transform.position - this.transform.position;
-        //timeSinceLastShot += Time.deltaTime;
-
-        //if (Input.GetMouseButton(0) == true && timeSinceLastShot > fireCd)
-        //{
-        //    Shoot(target);
-        //    timeSinceLastShot = 0;
-        //}
     }
 
     public void Shoot()

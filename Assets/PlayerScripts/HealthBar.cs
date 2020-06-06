@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    //Hampus
     public Slider slider;
     public GameObject healthBar;
     public PlayerHealthScript playerHealth;
@@ -17,7 +18,7 @@ public class HealthBar : MonoBehaviour
 
 
 
-
+    //Sätter spelarens maxhälsa
     public void SetMaxhealth(float health)
     {
         slider.maxValue = health;
@@ -31,11 +32,6 @@ public class HealthBar : MonoBehaviour
         healthBarImage.color = Color.Lerp(lowColor, fullColor, (slider.value/100));
 
     }
-    //public void Update()
-    //{
-        
-    //    //var barRenderer = healthBar.GetComponent<Renderer>();
-        
-    //}
+
       
 }

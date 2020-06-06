@@ -5,7 +5,7 @@ using UnityEngine;
 public class JeffsBullets : MonoBehaviour
 {
     float velocity, damage;
-
+    //Obsolete
     Vector3 direction;
     //räknar ut hur långt kulan ska färdas denna frame
     void Update()
